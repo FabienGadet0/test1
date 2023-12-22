@@ -1,2 +1,3 @@
 data/*
 src/converter/__pycache__
+.env

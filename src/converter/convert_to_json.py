@@ -1,3 +1,4 @@
+
 import csv
 import json
 import click
@@ -7,7 +8,7 @@ CSV_ENCODING = 'latin-1'
 
 
 def process_batch(batch):
-    return json.dumps(batch, indent=2)
+    return batch
 
 
 @click.command()
@@ -15,37 +16,26 @@ def process_batch(batch):
 @click.option('--json-file', required=True, help='Path to the output JSON file')
 @click.option('--batch-size', default=1000, help='Batch size for processing CSV file')
 def main(csv_file, json_file, batch_size):
-    """
-
-    """
-    data_list = []
-
     try:
         with open(csv_file, 'r', encoding=CSV_ENCODING) as csv_file:
             # i use dictReader because it can read lazily
             csv_reader = csv.DictReader(csv_file)
 
             batch_count = 0
-            for row in csv_reader:
-                data_list.append(row)
 
-                if len(data_list) == batch_size:
-                    json_batch = process_batch(data_list)
+            with open(json_file, 'w', encoding='utf-8') as json_out:
+                json_out.write("[")  # Start of JSON array
 
-                    # write to JSON
-                    with open(json_file, 'a', encoding='utf-8') as json_out:
-                        json_out.write(json_batch)
-
-                    # clear for next batch
-                    data_list = []
+                for row in csv_reader:
+                    if batch_count > 0:
+                        json_out.write(',')
+                    json_out.write(json.dumps(process_batch([row]), indent=2)[
+                                   1:-1])  # Remove leading '[' and trailing ']'
                     batch_count += 1
 
-            if data_list:
-                json_batch = process_batch(data_list)
-                with open(json_file, 'a', encoding='utf-8') as json_out:
-                    json_out.write(json_batch)
+                json_out.write("]")  # End of JSON array
 
-        print(f"[Success] Processed {batch_count + 1} batches.")
+        print(f"[Success] Processed {batch_count} batches.")
 
     except UnicodeDecodeError as e:
         print(
