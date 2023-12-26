@@ -6,6 +6,3 @@ __pycache__/
 etl/data/*
 etl/logs
 src/db_handler/__pycache__
-src/db_handler/__pycache__
-src/db_handler/__pycache__
-src/db_handler/__pycache__
