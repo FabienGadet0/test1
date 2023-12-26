@@ -10,7 +10,9 @@ packages = [{ include = "converter", from = "src" }]
 python = "^3.11"
 click = "^8.1.7"
 pandas = "^2.1.4"
+psycopg2-binary = "^2.9.9"
 psycopg2 = "^2.9.9"
+pendulum = "^3.0.0"
 
 
 [build-system]

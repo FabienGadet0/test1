@@ -1,3 +1,11 @@
 data/*
-src/converter/__pycache__
 .env
+__pycache__/*
+/__pycache__/*
+__pycache__/
+etl/data/*
+etl/logs
+src/db_handler/__pycache__
+src/db_handler/__pycache__
+src/db_handler/__pycache__
+src/db_handler/__pycache__
