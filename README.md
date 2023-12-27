@@ -1,13 +1,6 @@
 # Installation
 
-To set up and run the project , follow these steps:
-
 ## Prerequisites
-
-Make sure you have the following dependencies installed on your system:
-
-- Docker
-- Docker Compose
 
 ### Install Docker
 
@@ -19,6 +12,11 @@ Since there are 2 containers and the database need to initialize first i suggest
 
 ```
 docker-compose up db
+```
+
+And in a separate terminal :
+
+```
 docker-compose up pipeline
 ```
 
@@ -28,12 +26,28 @@ Once docker-compose is running you can exec in a new terminal `psql` in the db c
 it will prompt for a password , the default password is `pwd`
 
 ```
+
 docker exec -it rehub-db-1 psql -h localhost -U user -d production -W
+
 ```
 
 # Explanations
 
 ## Basic overview
+
+Every parts except the views are python scripts that can all be executed all at once using `poetry run pipeline` (which is what the pipeline docker container do)
+
+- unzip()  
+  Unzip the input zip file to csv
+
+- convert_to_json()  
+  Convert the csv file to a json format
+
+- load_to_db()  
+  Load the json file to the database
+
+- call_procedure()
+  Call the procedure called `raw_json_to_parsed_product()` that handle the json in `landing.raw_products` and extract it to `public.raw_parsed_products`
 
 ![Alt text](pipeline.png)
 
@@ -64,7 +78,7 @@ I handled duplicates using the following:
 
 ## Procedure
 
-I chose to execute the procedure using a small python script since i assume that you are using a dag system and it will be a lot easier to track any step throught a dag than directly in the database with for example a trigger.  
+I chose to execute the procedure using a small python script since i assume that you are using a dag system and it will be a lot easier to track any step throught a dag than directly in the database with for example a trigger.
 if we wanna make it run every day at 5 am for example we can set the pg_cron to:
 
 ```sql
