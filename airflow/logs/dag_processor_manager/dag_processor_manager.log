@@ -1,0 +1,488 @@
+[2023-12-26 06:46:25,906] {manager.py:474} INFO - Processing files using up to 2 processes at a time 
+[2023-12-26 06:46:25,906] {manager.py:475} INFO - Process each file at most once every 30 seconds
+[2023-12-26 06:46:25,906] {manager.py:477} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2023-12-26 06:46:25,907] {manager.py:684} INFO - Searching for files in /opt/airflow/dags
+[2023-12-26 06:46:25,908] {manager.py:687} INFO - There are 1 files in /opt/airflow/dags
+[2023-12-26 06:46:25,941] {manager.py:803} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                       PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------  -----  ---------  --------  ----------  --------------  ----------
+/opt/airflow/dags/scripts.py     38  0.01s             0           0
+================================================================================
+[2023-12-26 06:46:26,209] {manager.py:919} ERROR - Processor for /opt/airflow/dags/scripts.py exited with return code 1.
+[2023-12-26 06:46:55,996] {manager.py:803} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                     PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/scripts.py                           0          -1  0.28s           2023-12-26T06:46:26
+================================================================================
+[2023-12-26 06:46:56,403] {manager.py:919} ERROR - Processor for /opt/airflow/dags/scripts.py exited with return code 1.
+[2023-12-26 06:47:26,331] {manager.py:803} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                     PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/scripts.py                           0          -1  0.14s           2023-12-26T06:46:56
+================================================================================
+[2023-12-26 06:47:26,601] {manager.py:919} ERROR - Processor for /opt/airflow/dags/scripts.py exited with return code 1.
+[2023-12-26 06:47:56,514] {manager.py:803} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                     PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/scripts.py                           0          -1  0.15s           2023-12-26T06:47:26
+================================================================================
+[2023-12-26 06:47:56,787] {manager.py:919} ERROR - Processor for /opt/airflow/dags/scripts.py exited with return code 1.
+[2023-12-26 06:48:26,717] {manager.py:803} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                     PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/scripts.py                           0          -1  0.14s           2023-12-26T06:47:56
+================================================================================
+[2023-12-26 06:48:26,980] {manager.py:919} ERROR - Processor for /opt/airflow/dags/scripts.py exited with return code 1.
+[2023-12-26 06:48:56,901] {manager.py:803} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                     PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/scripts.py                           0          -1  0.14s           2023-12-26T06:48:26
+================================================================================
+[2023-12-26 06:48:57,173] {manager.py:919} ERROR - Processor for /opt/airflow/dags/scripts.py exited with return code 1.
+[2023-12-26 06:49:27,095] {manager.py:803} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                     PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/scripts.py                           0          -1  0.15s           2023-12-26T06:48:57
+================================================================================
+[2023-12-26 06:49:27,354] {manager.py:919} ERROR - Processor for /opt/airflow/dags/scripts.py exited with return code 1.
+[2023-12-26 06:49:57,286] {manager.py:803} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                     PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/scripts.py                           0          -1  0.14s           2023-12-26T06:49:27
+================================================================================
+[2023-12-26 06:49:57,539] {manager.py:919} ERROR - Processor for /opt/airflow/dags/scripts.py exited with return code 1.
+[2023-12-26 06:50:27,474] {manager.py:803} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                     PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/scripts.py                           0          -1  0.14s           2023-12-26T06:49:57
+================================================================================
+[2023-12-26 06:50:27,715] {manager.py:919} ERROR - Processor for /opt/airflow/dags/scripts.py exited with return code 1.
+[2023-12-26 06:50:57,649] {manager.py:803} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                     PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/scripts.py                           0          -1  0.13s           2023-12-26T06:50:27
+================================================================================
+[2023-12-26 06:50:57,911] {manager.py:919} ERROR - Processor for /opt/airflow/dags/scripts.py exited with return code 1.
+[2023-12-26 06:51:25,958] {manager.py:684} INFO - Searching for files in /opt/airflow/dags
+[2023-12-26 06:51:25,959] {manager.py:687} INFO - There are 1 files in /opt/airflow/dags
+[2023-12-26 06:51:27,833] {manager.py:803} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                     PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/scripts.py                           0          -1  0.14s           2023-12-26T06:50:57
+================================================================================
+[2023-12-26 06:51:28,090] {manager.py:919} ERROR - Processor for /opt/airflow/dags/scripts.py exited with return code 1.
+[2023-12-26 06:51:58,031] {manager.py:803} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                     PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/scripts.py                           0          -1  0.12s           2023-12-26T06:51:28
+================================================================================
+[2023-12-26 06:51:58,270] {manager.py:919} ERROR - Processor for /opt/airflow/dags/scripts.py exited with return code 1.
+[2023-12-26 06:52:28,201] {manager.py:803} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                     PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/scripts.py                           0          -1  0.13s           2023-12-26T06:51:58
+================================================================================
+[2023-12-26 06:52:28,456] {manager.py:919} ERROR - Processor for /opt/airflow/dags/scripts.py exited with return code 1.
+[2023-12-26 06:52:58,382] {manager.py:803} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                     PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/scripts.py                           0          -1  0.14s           2023-12-26T06:52:28
+================================================================================
+[2023-12-26 06:52:58,654] {manager.py:919} ERROR - Processor for /opt/airflow/dags/scripts.py exited with return code 1.
+[2023-12-26 06:53:28,570] {manager.py:803} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                     PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/scripts.py                           0          -1  0.15s           2023-12-26T06:52:58
+================================================================================
+[2023-12-26 06:53:28,828] {manager.py:919} ERROR - Processor for /opt/airflow/dags/scripts.py exited with return code 1.
+[2023-12-26 06:53:58,769] {manager.py:803} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                     PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/scripts.py                           0          -1  0.13s           2023-12-26T06:53:28
+================================================================================
+[2023-12-26 06:53:59,027] {manager.py:919} ERROR - Processor for /opt/airflow/dags/scripts.py exited with return code 1.
+[2023-12-26 06:54:28,943] {manager.py:803} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                     PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/scripts.py                           0          -1  0.15s           2023-12-26T06:53:59
+================================================================================
+[2023-12-26 06:54:29,210] {manager.py:919} ERROR - Processor for /opt/airflow/dags/scripts.py exited with return code 1.
+[2023-12-26 06:54:59,148] {manager.py:803} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                     PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/scripts.py                           0          -1  0.13s           2023-12-26T06:54:29
+================================================================================
+[2023-12-26 06:54:59,399] {manager.py:919} ERROR - Processor for /opt/airflow/dags/scripts.py exited with return code 1.
+[2023-12-26 06:55:29,329] {manager.py:803} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                     PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/scripts.py                           0          -1  0.14s           2023-12-26T06:54:59
+================================================================================
+[2023-12-26 06:55:29,587] {manager.py:919} ERROR - Processor for /opt/airflow/dags/scripts.py exited with return code 1.
+[2023-12-26 06:55:59,515] {manager.py:803} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                     PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/scripts.py                           0          -1  0.14s           2023-12-26T06:55:29
+================================================================================
+[2023-12-26 06:55:59,761] {manager.py:919} ERROR - Processor for /opt/airflow/dags/scripts.py exited with return code 1.
+[2023-12-26 06:56:26,692] {manager.py:684} INFO - Searching for files in /opt/airflow/dags
+[2023-12-26 06:56:26,694] {manager.py:687} INFO - There are 1 files in /opt/airflow/dags
+[2023-12-26 06:56:29,718] {manager.py:803} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                     PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/scripts.py                           0          -1  0.13s           2023-12-26T06:55:59
+================================================================================
+[2023-12-26 06:56:29,937] {manager.py:919} ERROR - Processor for /opt/airflow/dags/scripts.py exited with return code 1.
+[2023-12-26 06:56:59,875] {manager.py:803} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                     PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/scripts.py                           0          -1  0.13s           2023-12-26T06:56:29
+================================================================================
+[2023-12-26 06:57:00,128] {manager.py:919} ERROR - Processor for /opt/airflow/dags/scripts.py exited with return code 1.
+[2023-12-26 06:57:30,057] {manager.py:803} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                     PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/scripts.py                           0          -1  0.14s           2023-12-26T06:57:00
+================================================================================
+[2023-12-26 06:57:30,317] {manager.py:919} ERROR - Processor for /opt/airflow/dags/scripts.py exited with return code 1.
+[2023-12-26 06:58:00,238] {manager.py:803} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                     PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/scripts.py                           0          -1  0.15s           2023-12-26T06:57:30
+================================================================================
+[2023-12-26 06:58:00,506] {manager.py:919} ERROR - Processor for /opt/airflow/dags/scripts.py exited with return code 1.
+[2023-12-26 06:58:06,172] {manager.py:455} INFO - Exiting gracefully upon receiving signal 15
+[2023-12-27 01:57:01,873] {manager.py:474} INFO - Processing files using up to 2 processes at a time 
+[2023-12-27 01:57:01,873] {manager.py:475} INFO - Process each file at most once every 30 seconds
+[2023-12-27 01:57:01,874] {manager.py:477} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2023-12-27 01:57:01,874] {manager.py:684} INFO - Searching for files in /opt/airflow/dags
+[2023-12-27 01:57:01,875] {manager.py:687} INFO - There are 1 files in /opt/airflow/dags
+[2023-12-27 01:57:02,008] {manager.py:919} ERROR - Processor for /opt/airflow/dags/scripts.py exited with return code 1.
+[2023-12-27 01:57:12,931] {manager.py:803} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                     PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/scripts.py                           0          -1  0.11s           2023-12-27T01:57:02
+================================================================================
+[2023-12-27 01:57:32,129] {manager.py:919} ERROR - Processor for /opt/airflow/dags/scripts.py exited with return code 1.
+[2023-12-27 01:57:43,088] {manager.py:803} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                     PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/scripts.py                           0          -1  0.07s           2023-12-27T01:57:32
+================================================================================
+[2023-12-27 01:58:02,257] {manager.py:919} ERROR - Processor for /opt/airflow/dags/scripts.py exited with return code 1.
+[2023-12-27 01:58:13,199] {manager.py:803} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                     PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/scripts.py                           0          -1  0.08s           2023-12-27T01:58:02
+================================================================================
+[2023-12-27 01:58:32,398] {manager.py:919} ERROR - Processor for /opt/airflow/dags/scripts.py exited with return code 1.
+[2023-12-27 01:58:43,339] {manager.py:803} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                     PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/scripts.py                           0          -1  0.09s           2023-12-27T01:58:32
+================================================================================
+[2023-12-27 01:59:02,541] {manager.py:919} ERROR - Processor for /opt/airflow/dags/scripts.py exited with return code 1.
+[2023-12-27 01:59:13,476] {manager.py:803} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                     PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/scripts.py                           0          -1  0.09s           2023-12-27T01:59:02
+================================================================================
+[2023-12-27 01:59:32,681] {manager.py:919} ERROR - Processor for /opt/airflow/dags/scripts.py exited with return code 1.
+[2023-12-27 01:59:43,621] {manager.py:803} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                     PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/scripts.py                           0          -1  0.09s           2023-12-27T01:59:32
+================================================================================
+[2023-12-27 02:00:02,826] {manager.py:919} ERROR - Processor for /opt/airflow/dags/scripts.py exited with return code 1.
+[2023-12-27 02:00:13,761] {manager.py:803} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                     PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/scripts.py                           0          -1  0.09s           2023-12-27T02:00:02
+================================================================================
+[2023-12-27 02:00:32,970] {manager.py:919} ERROR - Processor for /opt/airflow/dags/scripts.py exited with return code 1.
+[2023-12-27 02:00:43,903] {manager.py:803} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                     PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/scripts.py                           0          -1  0.09s           2023-12-27T02:00:32
+================================================================================
+[2023-12-27 02:01:03,099] {manager.py:919} ERROR - Processor for /opt/airflow/dags/scripts.py exited with return code 1.
+[2023-12-27 02:01:14,050] {manager.py:803} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                     PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/scripts.py                           0          -1  0.08s           2023-12-27T02:01:03
+================================================================================
+[2023-12-27 02:01:33,228] {manager.py:919} ERROR - Processor for /opt/airflow/dags/scripts.py exited with return code 1.
+[2023-12-27 02:01:44,174] {manager.py:803} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                     PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/scripts.py                           0          -1  0.08s           2023-12-27T02:01:33
+================================================================================
+[2023-12-27 02:02:02,216] {manager.py:684} INFO - Searching for files in /opt/airflow/dags
+[2023-12-27 02:02:02,216] {manager.py:687} INFO - There are 1 files in /opt/airflow/dags
+[2023-12-27 02:02:03,355] {manager.py:919} ERROR - Processor for /opt/airflow/dags/scripts.py exited with return code 1.
+[2023-12-27 02:02:14,297] {manager.py:803} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                     PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/scripts.py                           0          -1  0.09s           2023-12-27T02:02:03
+================================================================================
+[2023-12-27 02:02:33,471] {manager.py:919} ERROR - Processor for /opt/airflow/dags/scripts.py exited with return code 1.
+[2023-12-27 02:02:44,430] {manager.py:803} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                     PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/scripts.py                           0          -1  0.07s           2023-12-27T02:02:33
+================================================================================
+[2023-12-27 02:03:03,548] {manager.py:919} ERROR - Processor for /opt/airflow/dags/scripts.py exited with return code 1.
+[2023-12-27 02:03:14,535] {manager.py:803} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                     PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/scripts.py                           0          -1  0.08s           2023-12-27T02:03:03
+================================================================================
+[2023-12-27 02:03:33,657] {manager.py:919} ERROR - Processor for /opt/airflow/dags/scripts.py exited with return code 1.
+[2023-12-27 02:03:44,612] {manager.py:803} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                     PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/scripts.py                           0          -1  0.08s           2023-12-27T02:03:33
+================================================================================
+[2023-12-27 02:04:03,756] {manager.py:919} ERROR - Processor for /opt/airflow/dags/scripts.py exited with return code 1.
+[2023-12-27 02:04:14,730] {manager.py:803} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                     PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/scripts.py                           0          -1  0.09s           2023-12-27T02:04:03
+================================================================================
+[2023-12-27 02:04:33,861] {manager.py:919} ERROR - Processor for /opt/airflow/dags/scripts.py exited with return code 1.
+[2023-12-27 02:04:44,824] {manager.py:803} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                     PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/scripts.py                           0          -1  0.09s           2023-12-27T02:04:33
+================================================================================
+[2023-12-27 02:05:03,950] {manager.py:919} ERROR - Processor for /opt/airflow/dags/scripts.py exited with return code 1.
+[2023-12-27 02:05:14,932] {manager.py:803} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                     PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/scripts.py                           0          -1  0.08s           2023-12-27T02:05:03
+================================================================================
+[2023-12-27 02:05:34,060] {manager.py:919} ERROR - Processor for /opt/airflow/dags/scripts.py exited with return code 1.
+[2023-12-27 02:05:45,022] {manager.py:803} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                     PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/scripts.py                           0          -1  0.08s           2023-12-27T02:05:34
+================================================================================
+[2023-12-27 02:06:04,143] {manager.py:919} ERROR - Processor for /opt/airflow/dags/scripts.py exited with return code 1.
+[2023-12-27 02:06:15,135] {manager.py:803} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                     PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/scripts.py                           0          -1  0.07s           2023-12-27T02:06:04
+================================================================================
+[2023-12-27 02:06:34,264] {manager.py:919} ERROR - Processor for /opt/airflow/dags/scripts.py exited with return code 1.
+[2023-12-27 02:06:45,217] {manager.py:803} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                     PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/scripts.py                           0          -1  0.09s           2023-12-27T02:06:34
+================================================================================
+[2023-12-27 02:07:02,257] {manager.py:684} INFO - Searching for files in /opt/airflow/dags
+[2023-12-27 02:07:02,259] {manager.py:687} INFO - There are 1 files in /opt/airflow/dags
+[2023-12-27 02:07:04,357] {manager.py:919} ERROR - Processor for /opt/airflow/dags/scripts.py exited with return code 1.
+[2023-12-27 02:07:15,335] {manager.py:803} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                     PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/scripts.py                           0          -1  0.08s           2023-12-27T02:07:04
+================================================================================
+[2023-12-27 02:07:34,464] {manager.py:919} ERROR - Processor for /opt/airflow/dags/scripts.py exited with return code 1.
+[2023-12-27 02:07:45,432] {manager.py:803} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                     PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/scripts.py                           0          -1  0.08s           2023-12-27T02:07:34
+================================================================================
+[2023-12-27 02:08:04,565] {manager.py:919} ERROR - Processor for /opt/airflow/dags/scripts.py exited with return code 1.
+[2023-12-27 02:08:15,538] {manager.py:803} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                     PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/scripts.py                           0          -1  0.08s           2023-12-27T02:08:04
+================================================================================
+[2023-12-27 02:08:34,665] {manager.py:919} ERROR - Processor for /opt/airflow/dags/scripts.py exited with return code 1.
+[2023-12-27 02:08:45,641] {manager.py:803} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                     PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/scripts.py                           0          -1  0.09s           2023-12-27T02:08:34
+================================================================================
+[2023-12-27 02:09:04,757] {manager.py:919} ERROR - Processor for /opt/airflow/dags/scripts.py exited with return code 1.
+[2023-12-27 02:09:15,728] {manager.py:803} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                     PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/scripts.py                           0          -1  0.07s           2023-12-27T02:09:04
+================================================================================
+[2023-12-27 02:09:34,840] {manager.py:919} ERROR - Processor for /opt/airflow/dags/scripts.py exited with return code 1.
+[2023-12-27 02:09:45,832] {manager.py:803} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                     PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/scripts.py                           0          -1  0.07s           2023-12-27T02:09:34
+================================================================================
+[2023-12-27 02:10:04,950] {manager.py:919} ERROR - Processor for /opt/airflow/dags/scripts.py exited with return code 1.
+[2023-12-27 02:10:15,916] {manager.py:803} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                     PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/scripts.py                           0          -1  0.07s           2023-12-27T02:10:04
+================================================================================
+[2023-12-27 02:10:35,048] {manager.py:919} ERROR - Processor for /opt/airflow/dags/scripts.py exited with return code 1.
+[2023-12-27 02:10:46,022] {manager.py:803} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                     PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/scripts.py                           0          -1  0.09s           2023-12-27T02:10:35
+================================================================================
+[2023-12-27 02:11:05,154] {manager.py:919} ERROR - Processor for /opt/airflow/dags/scripts.py exited with return code 1.

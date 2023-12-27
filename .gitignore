@@ -5,3 +5,5 @@ __pycache__/
 etl/data/*
 etl/logs
 src/db_handler/__pycache__
+scripts/data/*.csv
+scripts/data/*.json

@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "rehub"
+version = "0.1.0"
+description = ""
+authors = ["Fabien Gadet <fabiengadet@gmail.com>"]
+readme = "README.md"
+packages = [{ include = "converter", from = "src" }]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+click = "^8.1.7"
+pandas = "^2.1.4"
+psycopg2-binary = "^2.9.9"
+psycopg2 = "^2.9.9"
+pendulum = "^3.0.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+unzip = "src.converter.unzip:main_command"
+csv_to_json = "src.converter.convert_to_json:main_command"
+json_to_db = "src.db_handler.load_to_db:main_command"
+call_procedure = "src.db_handler.call_procedure:main"
+pipeline = "src.pipeline.pipeline:main"

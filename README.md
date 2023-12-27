@@ -1,6 +1,6 @@
 ## CSV input
 
-I got this csv from Kaggle
+I got this csv from Kaggle : https://www.kaggle.com/code/sinaasappel/ecommerce-data-exploration-and-visualization/input
 It has duplicates on purpose so i was thinking it would be a good example .
 
 ## Duplicates handling
@@ -12,6 +12,8 @@ I handle duplicates :
 -
 
 ## Procedure
+
+I chose to execute the procedure using a small python script since i assume that you are using a dag system and it will be a lot easier to track any step throught a dag than directly in the database with for example a trigger.
 
 if we wanna make it run every day at 5 am for example we can set the pg_cron to:
 

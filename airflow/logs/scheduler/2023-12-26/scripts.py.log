@@ -1,0 +1,2187 @@
+[2023-12-26 06:46:25,939] {processor.py:153} INFO - Started process (PID=38) to work on /opt/airflow/dags/scripts.py
+[2023-12-26 06:46:25,939] {processor.py:641} INFO - Processing file /opt/airflow/dags/scripts.py for tasks to queue
+[2023-12-26 06:46:25,939] {logging_mixin.py:115} INFO - [2023-12-26 06:46:25,939] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/scripts.py
+[2023-12-26 06:46:25,948] {processor.py:651} INFO - DAG(s) dict_keys(['import_dag']) retrieved from /opt/airflow/dags/scripts.py
+[2023-12-26 06:46:26,154] {logging_mixin.py:115} INFO - [2023-12-26 06:46:26,153] {manager.py:508} INFO - Created Permission View: can delete on DAG:import_dag
+[2023-12-26 06:46:26,162] {logging_mixin.py:115} INFO - [2023-12-26 06:46:26,162] {manager.py:508} INFO - Created Permission View: can edit on DAG:import_dag
+[2023-12-26 06:46:26,167] {logging_mixin.py:115} INFO - [2023-12-26 06:46:26,167] {manager.py:508} INFO - Created Permission View: can read on DAG:import_dag
+[2023-12-26 06:46:26,168] {logging_mixin.py:115} INFO - [2023-12-26 06:46:26,167] {dag.py:2371} INFO - Sync 1 DAGs
+[2023-12-26 06:46:26,176] {logging_mixin.py:115} INFO - [2023-12-26 06:46:26,176] {dag.py:2390} INFO - Creating ORM DAG for import_dag
+[2023-12-26 06:46:26,188] {logging_mixin.py:115} INFO - [2023-12-26 06:46:26,188] {dag.py:2919} INFO - Setting next_dagrun for import_dag to 2023-12-25T00:00:00+00:00, run_after=2023-12-25T00:01:00+00:00
+[2023-12-26 06:46:26,194] {processor.py:164} ERROR - Got an exception! Propagating...
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1609, in _execute_context
+    dialect, self, conn, execution_options, *args, **kw
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in _init_compiled
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in <dictcomp>
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/type_api.py", line 1308, in process
+    return process_param(value, dialect)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/sqlalchemy.py", line 169, in process_bind_param
+    attrs = {key: getattr(value, key) for key in self.attr_keys[type(value)]}
+KeyError: <class 'pendulum.duration.Duration'>
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/dag_processing/processor.py", line 158, in _run_file_processor
+    callback_requests=callback_requests,
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 71, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/dag_processing/processor.py", line 660, in process_file
+    dagbag.sync_to_db()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 71, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 615, in sync_to_db
+    for attempt in run_with_db_retries(logger=self.log):
+  File "/home/airflow/.local/lib/python3.7/site-packages/tenacity/__init__.py", line 382, in __iter__
+    do = self.iter(retry_state=retry_state)
+  File "/home/airflow/.local/lib/python3.7/site-packages/tenacity/__init__.py", line 349, in iter
+    return fut.result()
+  File "/usr/local/lib/python3.7/concurrent/futures/_base.py", line 428, in result
+    return self.__get_result()
+  File "/usr/local/lib/python3.7/concurrent/futures/_base.py", line 384, in __get_result
+    raise self._exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 629, in sync_to_db
+    DAG.bulk_write_to_db(self.dags.values(), session=session)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 68, in wrapper
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dag.py", line 2466, in bulk_write_to_db
+    session.flush()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3255, in flush
+    self._flush(objects)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3395, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/langhelpers.py", line 72, in __exit__
+    with_traceback=exc_tb,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3355, in _flush
+    flush_context.execute()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/unitofwork.py", line 453, in execute
+    rec.execute(self)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/unitofwork.py", line 630, in execute
+    uow,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/persistence.py", line 247, in save_obj
+    insert,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/persistence.py", line 1095, in _emit_insert_statements
+    statement, multiparams, execution_options=execution_options
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1520, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/elements.py", line 314, in _execute_on_connection
+    self, multiparams, params, execution_options
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1399, in _execute_clauseelement
+    cache_hit=cache_hit,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1615, in _execute_context
+    e, util.text_type(statement), parameters, None, None
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1930, in _handle_dbapi_exception
+    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1609, in _execute_context
+    dialect, self, conn, execution_options, *args, **kw
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in _init_compiled
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in <dictcomp>
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/type_api.py", line 1308, in process
+    return process_param(value, dialect)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/sqlalchemy.py", line 169, in process_bind_param
+    attrs = {key: getattr(value, key) for key in self.attr_keys[type(value)]}
+sqlalchemy.exc.StatementError: (builtins.KeyError) <class 'pendulum.duration.Duration'>
+[SQL: INSERT INTO dag (dag_id, root_dag_id, is_paused, is_subdag, is_active, last_parsed_time, last_pickled, last_expired, scheduler_lock, pickle_id, fileloc, owners, description, default_view, schedule_interval, timetable_description, max_active_tasks, max_active_runs, has_task_concurrency_limits, has_import_errors, next_dagrun, next_dagrun_data_interval_start, next_dagrun_data_interval_end, next_dagrun_create_after) VALUES (%(dag_id)s, %(root_dag_id)s, %(is_paused)s, %(is_subdag)s, %(is_active)s, %(last_parsed_time)s, %(last_pickled)s, %(last_expired)s, %(scheduler_lock)s, %(pickle_id)s, %(fileloc)s, %(owners)s, %(description)s, %(default_view)s, %(schedule_interval)s, %(timetable_description)s, %(max_active_tasks)s, %(max_active_runs)s, %(has_task_concurrency_limits)s, %(has_import_errors)s, %(next_dagrun)s, %(next_dagrun_data_interval_start)s, %(next_dagrun_data_interval_end)s, %(next_dagrun_create_after)s)]
+[parameters: [{'description': 'import to database raw data', 'max_active_runs': 16, 'next_dagrun_create_after': DateTime(2023, 12, 25, 0, 1, 0, tzinfo=Timezone('UT ... (626 characters truncated) ... Timezone('UTC')), 'default_view': 'grid', 'pickle_id': None, 'scheduler_lock': None, 'root_dag_id': None, 'last_expired': None, 'last_pickled': None}]]
+[2023-12-26 06:46:56,272] {processor.py:153} INFO - Started process (PID=66) to work on /opt/airflow/dags/scripts.py
+[2023-12-26 06:46:56,279] {processor.py:641} INFO - Processing file /opt/airflow/dags/scripts.py for tasks to queue
+[2023-12-26 06:46:56,279] {logging_mixin.py:115} INFO - [2023-12-26 06:46:56,279] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/scripts.py
+[2023-12-26 06:46:56,289] {processor.py:651} INFO - DAG(s) dict_keys(['import_dag']) retrieved from /opt/airflow/dags/scripts.py
+[2023-12-26 06:46:56,308] {logging_mixin.py:115} INFO - [2023-12-26 06:46:56,308] {dag.py:2371} INFO - Sync 1 DAGs
+[2023-12-26 06:46:56,314] {logging_mixin.py:115} INFO - [2023-12-26 06:46:56,313] {dag.py:2390} INFO - Creating ORM DAG for import_dag
+[2023-12-26 06:46:56,321] {logging_mixin.py:115} INFO - [2023-12-26 06:46:56,321] {dag.py:2919} INFO - Setting next_dagrun for import_dag to 2023-12-25T00:00:00+00:00, run_after=2023-12-25T00:01:00+00:00
+[2023-12-26 06:46:56,393] {processor.py:164} ERROR - Got an exception! Propagating...
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1609, in _execute_context
+    dialect, self, conn, execution_options, *args, **kw
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in _init_compiled
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in <dictcomp>
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/type_api.py", line 1308, in process
+    return process_param(value, dialect)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/sqlalchemy.py", line 169, in process_bind_param
+    attrs = {key: getattr(value, key) for key in self.attr_keys[type(value)]}
+KeyError: <class 'pendulum.duration.Duration'>
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/dag_processing/processor.py", line 158, in _run_file_processor
+    callback_requests=callback_requests,
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 71, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/dag_processing/processor.py", line 660, in process_file
+    dagbag.sync_to_db()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 71, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 615, in sync_to_db
+    for attempt in run_with_db_retries(logger=self.log):
+  File "/home/airflow/.local/lib/python3.7/site-packages/tenacity/__init__.py", line 382, in __iter__
+    do = self.iter(retry_state=retry_state)
+  File "/home/airflow/.local/lib/python3.7/site-packages/tenacity/__init__.py", line 349, in iter
+    return fut.result()
+  File "/usr/local/lib/python3.7/concurrent/futures/_base.py", line 428, in result
+    return self.__get_result()
+  File "/usr/local/lib/python3.7/concurrent/futures/_base.py", line 384, in __get_result
+    raise self._exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 629, in sync_to_db
+    DAG.bulk_write_to_db(self.dags.values(), session=session)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 68, in wrapper
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dag.py", line 2466, in bulk_write_to_db
+    session.flush()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3255, in flush
+    self._flush(objects)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3395, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/langhelpers.py", line 72, in __exit__
+    with_traceback=exc_tb,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3355, in _flush
+    flush_context.execute()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/unitofwork.py", line 453, in execute
+    rec.execute(self)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/unitofwork.py", line 630, in execute
+    uow,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/persistence.py", line 247, in save_obj
+    insert,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/persistence.py", line 1095, in _emit_insert_statements
+    statement, multiparams, execution_options=execution_options
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1520, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/elements.py", line 314, in _execute_on_connection
+    self, multiparams, params, execution_options
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1399, in _execute_clauseelement
+    cache_hit=cache_hit,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1615, in _execute_context
+    e, util.text_type(statement), parameters, None, None
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1930, in _handle_dbapi_exception
+    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1609, in _execute_context
+    dialect, self, conn, execution_options, *args, **kw
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in _init_compiled
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in <dictcomp>
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/type_api.py", line 1308, in process
+    return process_param(value, dialect)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/sqlalchemy.py", line 169, in process_bind_param
+    attrs = {key: getattr(value, key) for key in self.attr_keys[type(value)]}
+sqlalchemy.exc.StatementError: (builtins.KeyError) <class 'pendulum.duration.Duration'>
+[SQL: INSERT INTO dag (dag_id, root_dag_id, is_paused, is_subdag, is_active, last_parsed_time, last_pickled, last_expired, scheduler_lock, pickle_id, fileloc, owners, description, default_view, schedule_interval, timetable_description, max_active_tasks, max_active_runs, has_task_concurrency_limits, has_import_errors, next_dagrun, next_dagrun_data_interval_start, next_dagrun_data_interval_end, next_dagrun_create_after) VALUES (%(dag_id)s, %(root_dag_id)s, %(is_paused)s, %(is_subdag)s, %(is_active)s, %(last_parsed_time)s, %(last_pickled)s, %(last_expired)s, %(scheduler_lock)s, %(pickle_id)s, %(fileloc)s, %(owners)s, %(description)s, %(default_view)s, %(schedule_interval)s, %(timetable_description)s, %(max_active_tasks)s, %(max_active_runs)s, %(has_task_concurrency_limits)s, %(has_import_errors)s, %(next_dagrun)s, %(next_dagrun_data_interval_start)s, %(next_dagrun_data_interval_end)s, %(next_dagrun_create_after)s)]
+[parameters: [{'description': 'import to database raw data', 'max_active_runs': 16, 'next_dagrun_create_after': DateTime(2023, 12, 25, 0, 1, 0, tzinfo=Timezone('UT ... (626 characters truncated) ... Timezone('UTC')), 'default_view': 'grid', 'pickle_id': None, 'scheduler_lock': None, 'root_dag_id': None, 'last_expired': None, 'last_pickled': None}]]
+[2023-12-26 06:47:26,465] {processor.py:153} INFO - Started process (PID=94) to work on /opt/airflow/dags/scripts.py
+[2023-12-26 06:47:26,465] {processor.py:641} INFO - Processing file /opt/airflow/dags/scripts.py for tasks to queue
+[2023-12-26 06:47:26,466] {logging_mixin.py:115} INFO - [2023-12-26 06:47:26,466] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/scripts.py
+[2023-12-26 06:47:26,475] {processor.py:651} INFO - DAG(s) dict_keys(['import_dag']) retrieved from /opt/airflow/dags/scripts.py
+[2023-12-26 06:47:26,503] {logging_mixin.py:115} INFO - [2023-12-26 06:47:26,503] {dag.py:2371} INFO - Sync 1 DAGs
+[2023-12-26 06:47:26,509] {logging_mixin.py:115} INFO - [2023-12-26 06:47:26,509] {dag.py:2390} INFO - Creating ORM DAG for import_dag
+[2023-12-26 06:47:26,517] {logging_mixin.py:115} INFO - [2023-12-26 06:47:26,517] {dag.py:2919} INFO - Setting next_dagrun for import_dag to 2023-12-25T00:00:00+00:00, run_after=2023-12-25T00:01:00+00:00
+[2023-12-26 06:47:26,591] {processor.py:164} ERROR - Got an exception! Propagating...
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1609, in _execute_context
+    dialect, self, conn, execution_options, *args, **kw
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in _init_compiled
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in <dictcomp>
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/type_api.py", line 1308, in process
+    return process_param(value, dialect)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/sqlalchemy.py", line 169, in process_bind_param
+    attrs = {key: getattr(value, key) for key in self.attr_keys[type(value)]}
+KeyError: <class 'pendulum.duration.Duration'>
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/dag_processing/processor.py", line 158, in _run_file_processor
+    callback_requests=callback_requests,
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 71, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/dag_processing/processor.py", line 660, in process_file
+    dagbag.sync_to_db()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 71, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 615, in sync_to_db
+    for attempt in run_with_db_retries(logger=self.log):
+  File "/home/airflow/.local/lib/python3.7/site-packages/tenacity/__init__.py", line 382, in __iter__
+    do = self.iter(retry_state=retry_state)
+  File "/home/airflow/.local/lib/python3.7/site-packages/tenacity/__init__.py", line 349, in iter
+    return fut.result()
+  File "/usr/local/lib/python3.7/concurrent/futures/_base.py", line 428, in result
+    return self.__get_result()
+  File "/usr/local/lib/python3.7/concurrent/futures/_base.py", line 384, in __get_result
+    raise self._exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 629, in sync_to_db
+    DAG.bulk_write_to_db(self.dags.values(), session=session)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 68, in wrapper
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dag.py", line 2466, in bulk_write_to_db
+    session.flush()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3255, in flush
+    self._flush(objects)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3395, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/langhelpers.py", line 72, in __exit__
+    with_traceback=exc_tb,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3355, in _flush
+    flush_context.execute()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/unitofwork.py", line 453, in execute
+    rec.execute(self)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/unitofwork.py", line 630, in execute
+    uow,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/persistence.py", line 247, in save_obj
+    insert,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/persistence.py", line 1095, in _emit_insert_statements
+    statement, multiparams, execution_options=execution_options
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1520, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/elements.py", line 314, in _execute_on_connection
+    self, multiparams, params, execution_options
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1399, in _execute_clauseelement
+    cache_hit=cache_hit,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1615, in _execute_context
+    e, util.text_type(statement), parameters, None, None
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1930, in _handle_dbapi_exception
+    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1609, in _execute_context
+    dialect, self, conn, execution_options, *args, **kw
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in _init_compiled
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in <dictcomp>
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/type_api.py", line 1308, in process
+    return process_param(value, dialect)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/sqlalchemy.py", line 169, in process_bind_param
+    attrs = {key: getattr(value, key) for key in self.attr_keys[type(value)]}
+sqlalchemy.exc.StatementError: (builtins.KeyError) <class 'pendulum.duration.Duration'>
+[SQL: INSERT INTO dag (dag_id, root_dag_id, is_paused, is_subdag, is_active, last_parsed_time, last_pickled, last_expired, scheduler_lock, pickle_id, fileloc, owners, description, default_view, schedule_interval, timetable_description, max_active_tasks, max_active_runs, has_task_concurrency_limits, has_import_errors, next_dagrun, next_dagrun_data_interval_start, next_dagrun_data_interval_end, next_dagrun_create_after) VALUES (%(dag_id)s, %(root_dag_id)s, %(is_paused)s, %(is_subdag)s, %(is_active)s, %(last_parsed_time)s, %(last_pickled)s, %(last_expired)s, %(scheduler_lock)s, %(pickle_id)s, %(fileloc)s, %(owners)s, %(description)s, %(default_view)s, %(schedule_interval)s, %(timetable_description)s, %(max_active_tasks)s, %(max_active_runs)s, %(has_task_concurrency_limits)s, %(has_import_errors)s, %(next_dagrun)s, %(next_dagrun_data_interval_start)s, %(next_dagrun_data_interval_end)s, %(next_dagrun_create_after)s)]
+[parameters: [{'description': 'import to database raw data', 'max_active_runs': 16, 'next_dagrun_create_after': DateTime(2023, 12, 25, 0, 1, 0, tzinfo=Timezone('UT ... (626 characters truncated) ... Timezone('UTC')), 'default_view': 'grid', 'pickle_id': None, 'scheduler_lock': None, 'root_dag_id': None, 'last_expired': None, 'last_pickled': None}]]
+[2023-12-26 06:47:56,655] {processor.py:153} INFO - Started process (PID=122) to work on /opt/airflow/dags/scripts.py
+[2023-12-26 06:47:56,656] {processor.py:641} INFO - Processing file /opt/airflow/dags/scripts.py for tasks to queue
+[2023-12-26 06:47:56,656] {logging_mixin.py:115} INFO - [2023-12-26 06:47:56,656] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/scripts.py
+[2023-12-26 06:47:56,660] {processor.py:651} INFO - DAG(s) dict_keys(['import_dag']) retrieved from /opt/airflow/dags/scripts.py
+[2023-12-26 06:47:56,679] {logging_mixin.py:115} INFO - [2023-12-26 06:47:56,679] {dag.py:2371} INFO - Sync 1 DAGs
+[2023-12-26 06:47:56,685] {logging_mixin.py:115} INFO - [2023-12-26 06:47:56,685] {dag.py:2390} INFO - Creating ORM DAG for import_dag
+[2023-12-26 06:47:56,694] {logging_mixin.py:115} INFO - [2023-12-26 06:47:56,694] {dag.py:2919} INFO - Setting next_dagrun for import_dag to 2023-12-25T00:00:00+00:00, run_after=2023-12-25T00:01:00+00:00
+[2023-12-26 06:47:56,777] {processor.py:164} ERROR - Got an exception! Propagating...
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1609, in _execute_context
+    dialect, self, conn, execution_options, *args, **kw
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in _init_compiled
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in <dictcomp>
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/type_api.py", line 1308, in process
+    return process_param(value, dialect)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/sqlalchemy.py", line 169, in process_bind_param
+    attrs = {key: getattr(value, key) for key in self.attr_keys[type(value)]}
+KeyError: <class 'pendulum.duration.Duration'>
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/dag_processing/processor.py", line 158, in _run_file_processor
+    callback_requests=callback_requests,
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 71, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/dag_processing/processor.py", line 660, in process_file
+    dagbag.sync_to_db()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 71, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 615, in sync_to_db
+    for attempt in run_with_db_retries(logger=self.log):
+  File "/home/airflow/.local/lib/python3.7/site-packages/tenacity/__init__.py", line 382, in __iter__
+    do = self.iter(retry_state=retry_state)
+  File "/home/airflow/.local/lib/python3.7/site-packages/tenacity/__init__.py", line 349, in iter
+    return fut.result()
+  File "/usr/local/lib/python3.7/concurrent/futures/_base.py", line 428, in result
+    return self.__get_result()
+  File "/usr/local/lib/python3.7/concurrent/futures/_base.py", line 384, in __get_result
+    raise self._exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 629, in sync_to_db
+    DAG.bulk_write_to_db(self.dags.values(), session=session)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 68, in wrapper
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dag.py", line 2466, in bulk_write_to_db
+    session.flush()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3255, in flush
+    self._flush(objects)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3395, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/langhelpers.py", line 72, in __exit__
+    with_traceback=exc_tb,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3355, in _flush
+    flush_context.execute()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/unitofwork.py", line 453, in execute
+    rec.execute(self)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/unitofwork.py", line 630, in execute
+    uow,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/persistence.py", line 247, in save_obj
+    insert,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/persistence.py", line 1095, in _emit_insert_statements
+    statement, multiparams, execution_options=execution_options
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1520, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/elements.py", line 314, in _execute_on_connection
+    self, multiparams, params, execution_options
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1399, in _execute_clauseelement
+    cache_hit=cache_hit,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1615, in _execute_context
+    e, util.text_type(statement), parameters, None, None
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1930, in _handle_dbapi_exception
+    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1609, in _execute_context
+    dialect, self, conn, execution_options, *args, **kw
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in _init_compiled
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in <dictcomp>
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/type_api.py", line 1308, in process
+    return process_param(value, dialect)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/sqlalchemy.py", line 169, in process_bind_param
+    attrs = {key: getattr(value, key) for key in self.attr_keys[type(value)]}
+sqlalchemy.exc.StatementError: (builtins.KeyError) <class 'pendulum.duration.Duration'>
+[SQL: INSERT INTO dag (dag_id, root_dag_id, is_paused, is_subdag, is_active, last_parsed_time, last_pickled, last_expired, scheduler_lock, pickle_id, fileloc, owners, description, default_view, schedule_interval, timetable_description, max_active_tasks, max_active_runs, has_task_concurrency_limits, has_import_errors, next_dagrun, next_dagrun_data_interval_start, next_dagrun_data_interval_end, next_dagrun_create_after) VALUES (%(dag_id)s, %(root_dag_id)s, %(is_paused)s, %(is_subdag)s, %(is_active)s, %(last_parsed_time)s, %(last_pickled)s, %(last_expired)s, %(scheduler_lock)s, %(pickle_id)s, %(fileloc)s, %(owners)s, %(description)s, %(default_view)s, %(schedule_interval)s, %(timetable_description)s, %(max_active_tasks)s, %(max_active_runs)s, %(has_task_concurrency_limits)s, %(has_import_errors)s, %(next_dagrun)s, %(next_dagrun_data_interval_start)s, %(next_dagrun_data_interval_end)s, %(next_dagrun_create_after)s)]
+[parameters: [{'description': 'import to database raw data', 'max_active_runs': 16, 'next_dagrun_create_after': DateTime(2023, 12, 25, 0, 1, 0, tzinfo=Timezone('UT ... (626 characters truncated) ... Timezone('UTC')), 'default_view': 'grid', 'pickle_id': None, 'scheduler_lock': None, 'root_dag_id': None, 'last_expired': None, 'last_pickled': None}]]
+[2023-12-26 06:48:26,849] {processor.py:153} INFO - Started process (PID=141) to work on /opt/airflow/dags/scripts.py
+[2023-12-26 06:48:26,850] {processor.py:641} INFO - Processing file /opt/airflow/dags/scripts.py for tasks to queue
+[2023-12-26 06:48:26,851] {logging_mixin.py:115} INFO - [2023-12-26 06:48:26,851] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/scripts.py
+[2023-12-26 06:48:26,860] {processor.py:651} INFO - DAG(s) dict_keys(['import_dag']) retrieved from /opt/airflow/dags/scripts.py
+[2023-12-26 06:48:26,884] {logging_mixin.py:115} INFO - [2023-12-26 06:48:26,884] {dag.py:2371} INFO - Sync 1 DAGs
+[2023-12-26 06:48:26,889] {logging_mixin.py:115} INFO - [2023-12-26 06:48:26,889] {dag.py:2390} INFO - Creating ORM DAG for import_dag
+[2023-12-26 06:48:26,897] {logging_mixin.py:115} INFO - [2023-12-26 06:48:26,897] {dag.py:2919} INFO - Setting next_dagrun for import_dag to 2023-12-25T00:00:00+00:00, run_after=2023-12-25T00:01:00+00:00
+[2023-12-26 06:48:26,971] {processor.py:164} ERROR - Got an exception! Propagating...
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1609, in _execute_context
+    dialect, self, conn, execution_options, *args, **kw
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in _init_compiled
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in <dictcomp>
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/type_api.py", line 1308, in process
+    return process_param(value, dialect)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/sqlalchemy.py", line 169, in process_bind_param
+    attrs = {key: getattr(value, key) for key in self.attr_keys[type(value)]}
+KeyError: <class 'pendulum.duration.Duration'>
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/dag_processing/processor.py", line 158, in _run_file_processor
+    callback_requests=callback_requests,
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 71, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/dag_processing/processor.py", line 660, in process_file
+    dagbag.sync_to_db()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 71, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 615, in sync_to_db
+    for attempt in run_with_db_retries(logger=self.log):
+  File "/home/airflow/.local/lib/python3.7/site-packages/tenacity/__init__.py", line 382, in __iter__
+    do = self.iter(retry_state=retry_state)
+  File "/home/airflow/.local/lib/python3.7/site-packages/tenacity/__init__.py", line 349, in iter
+    return fut.result()
+  File "/usr/local/lib/python3.7/concurrent/futures/_base.py", line 428, in result
+    return self.__get_result()
+  File "/usr/local/lib/python3.7/concurrent/futures/_base.py", line 384, in __get_result
+    raise self._exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 629, in sync_to_db
+    DAG.bulk_write_to_db(self.dags.values(), session=session)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 68, in wrapper
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dag.py", line 2466, in bulk_write_to_db
+    session.flush()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3255, in flush
+    self._flush(objects)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3395, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/langhelpers.py", line 72, in __exit__
+    with_traceback=exc_tb,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3355, in _flush
+    flush_context.execute()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/unitofwork.py", line 453, in execute
+    rec.execute(self)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/unitofwork.py", line 630, in execute
+    uow,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/persistence.py", line 247, in save_obj
+    insert,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/persistence.py", line 1095, in _emit_insert_statements
+    statement, multiparams, execution_options=execution_options
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1520, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/elements.py", line 314, in _execute_on_connection
+    self, multiparams, params, execution_options
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1399, in _execute_clauseelement
+    cache_hit=cache_hit,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1615, in _execute_context
+    e, util.text_type(statement), parameters, None, None
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1930, in _handle_dbapi_exception
+    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1609, in _execute_context
+    dialect, self, conn, execution_options, *args, **kw
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in _init_compiled
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in <dictcomp>
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/type_api.py", line 1308, in process
+    return process_param(value, dialect)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/sqlalchemy.py", line 169, in process_bind_param
+    attrs = {key: getattr(value, key) for key in self.attr_keys[type(value)]}
+sqlalchemy.exc.StatementError: (builtins.KeyError) <class 'pendulum.duration.Duration'>
+[SQL: INSERT INTO dag (dag_id, root_dag_id, is_paused, is_subdag, is_active, last_parsed_time, last_pickled, last_expired, scheduler_lock, pickle_id, fileloc, owners, description, default_view, schedule_interval, timetable_description, max_active_tasks, max_active_runs, has_task_concurrency_limits, has_import_errors, next_dagrun, next_dagrun_data_interval_start, next_dagrun_data_interval_end, next_dagrun_create_after) VALUES (%(dag_id)s, %(root_dag_id)s, %(is_paused)s, %(is_subdag)s, %(is_active)s, %(last_parsed_time)s, %(last_pickled)s, %(last_expired)s, %(scheduler_lock)s, %(pickle_id)s, %(fileloc)s, %(owners)s, %(description)s, %(default_view)s, %(schedule_interval)s, %(timetable_description)s, %(max_active_tasks)s, %(max_active_runs)s, %(has_task_concurrency_limits)s, %(has_import_errors)s, %(next_dagrun)s, %(next_dagrun_data_interval_start)s, %(next_dagrun_data_interval_end)s, %(next_dagrun_create_after)s)]
+[parameters: [{'description': 'import to database raw data', 'max_active_runs': 16, 'next_dagrun_create_after': DateTime(2023, 12, 25, 0, 1, 0, tzinfo=Timezone('UT ... (626 characters truncated) ... Timezone('UTC')), 'default_view': 'grid', 'pickle_id': None, 'scheduler_lock': None, 'root_dag_id': None, 'last_expired': None, 'last_pickled': None}]]
+[2023-12-26 06:48:57,042] {processor.py:153} INFO - Started process (PID=168) to work on /opt/airflow/dags/scripts.py
+[2023-12-26 06:48:57,048] {processor.py:641} INFO - Processing file /opt/airflow/dags/scripts.py for tasks to queue
+[2023-12-26 06:48:57,049] {logging_mixin.py:115} INFO - [2023-12-26 06:48:57,049] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/scripts.py
+[2023-12-26 06:48:57,059] {processor.py:651} INFO - DAG(s) dict_keys(['import_dag']) retrieved from /opt/airflow/dags/scripts.py
+[2023-12-26 06:48:57,079] {logging_mixin.py:115} INFO - [2023-12-26 06:48:57,079] {dag.py:2371} INFO - Sync 1 DAGs
+[2023-12-26 06:48:57,084] {logging_mixin.py:115} INFO - [2023-12-26 06:48:57,084] {dag.py:2390} INFO - Creating ORM DAG for import_dag
+[2023-12-26 06:48:57,091] {logging_mixin.py:115} INFO - [2023-12-26 06:48:57,091] {dag.py:2919} INFO - Setting next_dagrun for import_dag to 2023-12-25T00:00:00+00:00, run_after=2023-12-25T00:01:00+00:00
+[2023-12-26 06:48:57,164] {processor.py:164} ERROR - Got an exception! Propagating...
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1609, in _execute_context
+    dialect, self, conn, execution_options, *args, **kw
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in _init_compiled
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in <dictcomp>
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/type_api.py", line 1308, in process
+    return process_param(value, dialect)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/sqlalchemy.py", line 169, in process_bind_param
+    attrs = {key: getattr(value, key) for key in self.attr_keys[type(value)]}
+KeyError: <class 'pendulum.duration.Duration'>
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/dag_processing/processor.py", line 158, in _run_file_processor
+    callback_requests=callback_requests,
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 71, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/dag_processing/processor.py", line 660, in process_file
+    dagbag.sync_to_db()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 71, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 615, in sync_to_db
+    for attempt in run_with_db_retries(logger=self.log):
+  File "/home/airflow/.local/lib/python3.7/site-packages/tenacity/__init__.py", line 382, in __iter__
+    do = self.iter(retry_state=retry_state)
+  File "/home/airflow/.local/lib/python3.7/site-packages/tenacity/__init__.py", line 349, in iter
+    return fut.result()
+  File "/usr/local/lib/python3.7/concurrent/futures/_base.py", line 428, in result
+    return self.__get_result()
+  File "/usr/local/lib/python3.7/concurrent/futures/_base.py", line 384, in __get_result
+    raise self._exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 629, in sync_to_db
+    DAG.bulk_write_to_db(self.dags.values(), session=session)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 68, in wrapper
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dag.py", line 2466, in bulk_write_to_db
+    session.flush()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3255, in flush
+    self._flush(objects)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3395, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/langhelpers.py", line 72, in __exit__
+    with_traceback=exc_tb,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3355, in _flush
+    flush_context.execute()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/unitofwork.py", line 453, in execute
+    rec.execute(self)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/unitofwork.py", line 630, in execute
+    uow,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/persistence.py", line 247, in save_obj
+    insert,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/persistence.py", line 1095, in _emit_insert_statements
+    statement, multiparams, execution_options=execution_options
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1520, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/elements.py", line 314, in _execute_on_connection
+    self, multiparams, params, execution_options
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1399, in _execute_clauseelement
+    cache_hit=cache_hit,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1615, in _execute_context
+    e, util.text_type(statement), parameters, None, None
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1930, in _handle_dbapi_exception
+    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1609, in _execute_context
+    dialect, self, conn, execution_options, *args, **kw
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in _init_compiled
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in <dictcomp>
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/type_api.py", line 1308, in process
+    return process_param(value, dialect)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/sqlalchemy.py", line 169, in process_bind_param
+    attrs = {key: getattr(value, key) for key in self.attr_keys[type(value)]}
+sqlalchemy.exc.StatementError: (builtins.KeyError) <class 'pendulum.duration.Duration'>
+[SQL: INSERT INTO dag (dag_id, root_dag_id, is_paused, is_subdag, is_active, last_parsed_time, last_pickled, last_expired, scheduler_lock, pickle_id, fileloc, owners, description, default_view, schedule_interval, timetable_description, max_active_tasks, max_active_runs, has_task_concurrency_limits, has_import_errors, next_dagrun, next_dagrun_data_interval_start, next_dagrun_data_interval_end, next_dagrun_create_after) VALUES (%(dag_id)s, %(root_dag_id)s, %(is_paused)s, %(is_subdag)s, %(is_active)s, %(last_parsed_time)s, %(last_pickled)s, %(last_expired)s, %(scheduler_lock)s, %(pickle_id)s, %(fileloc)s, %(owners)s, %(description)s, %(default_view)s, %(schedule_interval)s, %(timetable_description)s, %(max_active_tasks)s, %(max_active_runs)s, %(has_task_concurrency_limits)s, %(has_import_errors)s, %(next_dagrun)s, %(next_dagrun_data_interval_start)s, %(next_dagrun_data_interval_end)s, %(next_dagrun_create_after)s)]
+[parameters: [{'description': 'import to database raw data', 'max_active_runs': 16, 'next_dagrun_create_after': DateTime(2023, 12, 25, 0, 1, 0, tzinfo=Timezone('UT ... (625 characters truncated) ... Timezone('UTC')), 'default_view': 'grid', 'pickle_id': None, 'scheduler_lock': None, 'root_dag_id': None, 'last_expired': None, 'last_pickled': None}]]
+[2023-12-26 06:49:27,229] {processor.py:153} INFO - Started process (PID=196) to work on /opt/airflow/dags/scripts.py
+[2023-12-26 06:49:27,230] {processor.py:641} INFO - Processing file /opt/airflow/dags/scripts.py for tasks to queue
+[2023-12-26 06:49:27,230] {logging_mixin.py:115} INFO - [2023-12-26 06:49:27,230] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/scripts.py
+[2023-12-26 06:49:27,238] {processor.py:651} INFO - DAG(s) dict_keys(['import_dag']) retrieved from /opt/airflow/dags/scripts.py
+[2023-12-26 06:49:27,258] {logging_mixin.py:115} INFO - [2023-12-26 06:49:27,258] {dag.py:2371} INFO - Sync 1 DAGs
+[2023-12-26 06:49:27,263] {logging_mixin.py:115} INFO - [2023-12-26 06:49:27,263] {dag.py:2390} INFO - Creating ORM DAG for import_dag
+[2023-12-26 06:49:27,271] {logging_mixin.py:115} INFO - [2023-12-26 06:49:27,271] {dag.py:2919} INFO - Setting next_dagrun for import_dag to 2023-12-25T00:00:00+00:00, run_after=2023-12-25T00:01:00+00:00
+[2023-12-26 06:49:27,344] {processor.py:164} ERROR - Got an exception! Propagating...
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1609, in _execute_context
+    dialect, self, conn, execution_options, *args, **kw
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in _init_compiled
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in <dictcomp>
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/type_api.py", line 1308, in process
+    return process_param(value, dialect)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/sqlalchemy.py", line 169, in process_bind_param
+    attrs = {key: getattr(value, key) for key in self.attr_keys[type(value)]}
+KeyError: <class 'pendulum.duration.Duration'>
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/dag_processing/processor.py", line 158, in _run_file_processor
+    callback_requests=callback_requests,
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 71, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/dag_processing/processor.py", line 660, in process_file
+    dagbag.sync_to_db()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 71, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 615, in sync_to_db
+    for attempt in run_with_db_retries(logger=self.log):
+  File "/home/airflow/.local/lib/python3.7/site-packages/tenacity/__init__.py", line 382, in __iter__
+    do = self.iter(retry_state=retry_state)
+  File "/home/airflow/.local/lib/python3.7/site-packages/tenacity/__init__.py", line 349, in iter
+    return fut.result()
+  File "/usr/local/lib/python3.7/concurrent/futures/_base.py", line 428, in result
+    return self.__get_result()
+  File "/usr/local/lib/python3.7/concurrent/futures/_base.py", line 384, in __get_result
+    raise self._exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 629, in sync_to_db
+    DAG.bulk_write_to_db(self.dags.values(), session=session)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 68, in wrapper
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dag.py", line 2466, in bulk_write_to_db
+    session.flush()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3255, in flush
+    self._flush(objects)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3395, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/langhelpers.py", line 72, in __exit__
+    with_traceback=exc_tb,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3355, in _flush
+    flush_context.execute()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/unitofwork.py", line 453, in execute
+    rec.execute(self)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/unitofwork.py", line 630, in execute
+    uow,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/persistence.py", line 247, in save_obj
+    insert,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/persistence.py", line 1095, in _emit_insert_statements
+    statement, multiparams, execution_options=execution_options
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1520, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/elements.py", line 314, in _execute_on_connection
+    self, multiparams, params, execution_options
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1399, in _execute_clauseelement
+    cache_hit=cache_hit,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1615, in _execute_context
+    e, util.text_type(statement), parameters, None, None
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1930, in _handle_dbapi_exception
+    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1609, in _execute_context
+    dialect, self, conn, execution_options, *args, **kw
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in _init_compiled
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in <dictcomp>
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/type_api.py", line 1308, in process
+    return process_param(value, dialect)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/sqlalchemy.py", line 169, in process_bind_param
+    attrs = {key: getattr(value, key) for key in self.attr_keys[type(value)]}
+sqlalchemy.exc.StatementError: (builtins.KeyError) <class 'pendulum.duration.Duration'>
+[SQL: INSERT INTO dag (dag_id, root_dag_id, is_paused, is_subdag, is_active, last_parsed_time, last_pickled, last_expired, scheduler_lock, pickle_id, fileloc, owners, description, default_view, schedule_interval, timetable_description, max_active_tasks, max_active_runs, has_task_concurrency_limits, has_import_errors, next_dagrun, next_dagrun_data_interval_start, next_dagrun_data_interval_end, next_dagrun_create_after) VALUES (%(dag_id)s, %(root_dag_id)s, %(is_paused)s, %(is_subdag)s, %(is_active)s, %(last_parsed_time)s, %(last_pickled)s, %(last_expired)s, %(scheduler_lock)s, %(pickle_id)s, %(fileloc)s, %(owners)s, %(description)s, %(default_view)s, %(schedule_interval)s, %(timetable_description)s, %(max_active_tasks)s, %(max_active_runs)s, %(has_task_concurrency_limits)s, %(has_import_errors)s, %(next_dagrun)s, %(next_dagrun_data_interval_start)s, %(next_dagrun_data_interval_end)s, %(next_dagrun_create_after)s)]
+[parameters: [{'description': 'import to database raw data', 'max_active_runs': 16, 'next_dagrun_create_after': DateTime(2023, 12, 25, 0, 1, 0, tzinfo=Timezone('UT ... (626 characters truncated) ... Timezone('UTC')), 'default_view': 'grid', 'pickle_id': None, 'scheduler_lock': None, 'root_dag_id': None, 'last_expired': None, 'last_pickled': None}]]
+[2023-12-26 06:49:57,406] {processor.py:153} INFO - Started process (PID=224) to work on /opt/airflow/dags/scripts.py
+[2023-12-26 06:49:57,413] {processor.py:641} INFO - Processing file /opt/airflow/dags/scripts.py for tasks to queue
+[2023-12-26 06:49:57,413] {logging_mixin.py:115} INFO - [2023-12-26 06:49:57,413] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/scripts.py
+[2023-12-26 06:49:57,424] {processor.py:651} INFO - DAG(s) dict_keys(['import_dag']) retrieved from /opt/airflow/dags/scripts.py
+[2023-12-26 06:49:57,444] {logging_mixin.py:115} INFO - [2023-12-26 06:49:57,444] {dag.py:2371} INFO - Sync 1 DAGs
+[2023-12-26 06:49:57,450] {logging_mixin.py:115} INFO - [2023-12-26 06:49:57,450] {dag.py:2390} INFO - Creating ORM DAG for import_dag
+[2023-12-26 06:49:57,457] {logging_mixin.py:115} INFO - [2023-12-26 06:49:57,457] {dag.py:2919} INFO - Setting next_dagrun for import_dag to 2023-12-25T00:00:00+00:00, run_after=2023-12-25T00:01:00+00:00
+[2023-12-26 06:49:57,530] {processor.py:164} ERROR - Got an exception! Propagating...
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1609, in _execute_context
+    dialect, self, conn, execution_options, *args, **kw
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in _init_compiled
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in <dictcomp>
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/type_api.py", line 1308, in process
+    return process_param(value, dialect)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/sqlalchemy.py", line 169, in process_bind_param
+    attrs = {key: getattr(value, key) for key in self.attr_keys[type(value)]}
+KeyError: <class 'pendulum.duration.Duration'>
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/dag_processing/processor.py", line 158, in _run_file_processor
+    callback_requests=callback_requests,
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 71, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/dag_processing/processor.py", line 660, in process_file
+    dagbag.sync_to_db()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 71, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 615, in sync_to_db
+    for attempt in run_with_db_retries(logger=self.log):
+  File "/home/airflow/.local/lib/python3.7/site-packages/tenacity/__init__.py", line 382, in __iter__
+    do = self.iter(retry_state=retry_state)
+  File "/home/airflow/.local/lib/python3.7/site-packages/tenacity/__init__.py", line 349, in iter
+    return fut.result()
+  File "/usr/local/lib/python3.7/concurrent/futures/_base.py", line 428, in result
+    return self.__get_result()
+  File "/usr/local/lib/python3.7/concurrent/futures/_base.py", line 384, in __get_result
+    raise self._exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 629, in sync_to_db
+    DAG.bulk_write_to_db(self.dags.values(), session=session)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 68, in wrapper
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dag.py", line 2466, in bulk_write_to_db
+    session.flush()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3255, in flush
+    self._flush(objects)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3395, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/langhelpers.py", line 72, in __exit__
+    with_traceback=exc_tb,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3355, in _flush
+    flush_context.execute()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/unitofwork.py", line 453, in execute
+    rec.execute(self)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/unitofwork.py", line 630, in execute
+    uow,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/persistence.py", line 247, in save_obj
+    insert,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/persistence.py", line 1095, in _emit_insert_statements
+    statement, multiparams, execution_options=execution_options
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1520, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/elements.py", line 314, in _execute_on_connection
+    self, multiparams, params, execution_options
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1399, in _execute_clauseelement
+    cache_hit=cache_hit,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1615, in _execute_context
+    e, util.text_type(statement), parameters, None, None
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1930, in _handle_dbapi_exception
+    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1609, in _execute_context
+    dialect, self, conn, execution_options, *args, **kw
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in _init_compiled
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in <dictcomp>
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/type_api.py", line 1308, in process
+    return process_param(value, dialect)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/sqlalchemy.py", line 169, in process_bind_param
+    attrs = {key: getattr(value, key) for key in self.attr_keys[type(value)]}
+sqlalchemy.exc.StatementError: (builtins.KeyError) <class 'pendulum.duration.Duration'>
+[SQL: INSERT INTO dag (dag_id, root_dag_id, is_paused, is_subdag, is_active, last_parsed_time, last_pickled, last_expired, scheduler_lock, pickle_id, fileloc, owners, description, default_view, schedule_interval, timetable_description, max_active_tasks, max_active_runs, has_task_concurrency_limits, has_import_errors, next_dagrun, next_dagrun_data_interval_start, next_dagrun_data_interval_end, next_dagrun_create_after) VALUES (%(dag_id)s, %(root_dag_id)s, %(is_paused)s, %(is_subdag)s, %(is_active)s, %(last_parsed_time)s, %(last_pickled)s, %(last_expired)s, %(scheduler_lock)s, %(pickle_id)s, %(fileloc)s, %(owners)s, %(description)s, %(default_view)s, %(schedule_interval)s, %(timetable_description)s, %(max_active_tasks)s, %(max_active_runs)s, %(has_task_concurrency_limits)s, %(has_import_errors)s, %(next_dagrun)s, %(next_dagrun_data_interval_start)s, %(next_dagrun_data_interval_end)s, %(next_dagrun_create_after)s)]
+[parameters: [{'description': 'import to database raw data', 'max_active_runs': 16, 'next_dagrun_create_after': DateTime(2023, 12, 25, 0, 1, 0, tzinfo=Timezone('UT ... (626 characters truncated) ... Timezone('UTC')), 'default_view': 'grid', 'pickle_id': None, 'scheduler_lock': None, 'root_dag_id': None, 'last_expired': None, 'last_pickled': None}]]
+[2023-12-26 06:50:27,595] {processor.py:153} INFO - Started process (PID=243) to work on /opt/airflow/dags/scripts.py
+[2023-12-26 06:50:27,595] {processor.py:641} INFO - Processing file /opt/airflow/dags/scripts.py for tasks to queue
+[2023-12-26 06:50:27,595] {logging_mixin.py:115} INFO - [2023-12-26 06:50:27,595] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/scripts.py
+[2023-12-26 06:50:27,604] {processor.py:651} INFO - DAG(s) dict_keys(['import_dag']) retrieved from /opt/airflow/dags/scripts.py
+[2023-12-26 06:50:27,622] {logging_mixin.py:115} INFO - [2023-12-26 06:50:27,622] {dag.py:2371} INFO - Sync 1 DAGs
+[2023-12-26 06:50:27,627] {logging_mixin.py:115} INFO - [2023-12-26 06:50:27,627] {dag.py:2390} INFO - Creating ORM DAG for import_dag
+[2023-12-26 06:50:27,635] {logging_mixin.py:115} INFO - [2023-12-26 06:50:27,635] {dag.py:2919} INFO - Setting next_dagrun for import_dag to 2023-12-25T00:00:00+00:00, run_after=2023-12-25T00:01:00+00:00
+[2023-12-26 06:50:27,706] {processor.py:164} ERROR - Got an exception! Propagating...
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1609, in _execute_context
+    dialect, self, conn, execution_options, *args, **kw
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in _init_compiled
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in <dictcomp>
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/type_api.py", line 1308, in process
+    return process_param(value, dialect)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/sqlalchemy.py", line 169, in process_bind_param
+    attrs = {key: getattr(value, key) for key in self.attr_keys[type(value)]}
+KeyError: <class 'pendulum.duration.Duration'>
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/dag_processing/processor.py", line 158, in _run_file_processor
+    callback_requests=callback_requests,
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 71, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/dag_processing/processor.py", line 660, in process_file
+    dagbag.sync_to_db()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 71, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 615, in sync_to_db
+    for attempt in run_with_db_retries(logger=self.log):
+  File "/home/airflow/.local/lib/python3.7/site-packages/tenacity/__init__.py", line 382, in __iter__
+    do = self.iter(retry_state=retry_state)
+  File "/home/airflow/.local/lib/python3.7/site-packages/tenacity/__init__.py", line 349, in iter
+    return fut.result()
+  File "/usr/local/lib/python3.7/concurrent/futures/_base.py", line 428, in result
+    return self.__get_result()
+  File "/usr/local/lib/python3.7/concurrent/futures/_base.py", line 384, in __get_result
+    raise self._exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 629, in sync_to_db
+    DAG.bulk_write_to_db(self.dags.values(), session=session)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 68, in wrapper
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dag.py", line 2466, in bulk_write_to_db
+    session.flush()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3255, in flush
+    self._flush(objects)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3395, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/langhelpers.py", line 72, in __exit__
+    with_traceback=exc_tb,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3355, in _flush
+    flush_context.execute()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/unitofwork.py", line 453, in execute
+    rec.execute(self)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/unitofwork.py", line 630, in execute
+    uow,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/persistence.py", line 247, in save_obj
+    insert,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/persistence.py", line 1095, in _emit_insert_statements
+    statement, multiparams, execution_options=execution_options
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1520, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/elements.py", line 314, in _execute_on_connection
+    self, multiparams, params, execution_options
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1399, in _execute_clauseelement
+    cache_hit=cache_hit,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1615, in _execute_context
+    e, util.text_type(statement), parameters, None, None
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1930, in _handle_dbapi_exception
+    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1609, in _execute_context
+    dialect, self, conn, execution_options, *args, **kw
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in _init_compiled
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in <dictcomp>
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/type_api.py", line 1308, in process
+    return process_param(value, dialect)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/sqlalchemy.py", line 169, in process_bind_param
+    attrs = {key: getattr(value, key) for key in self.attr_keys[type(value)]}
+sqlalchemy.exc.StatementError: (builtins.KeyError) <class 'pendulum.duration.Duration'>
+[SQL: INSERT INTO dag (dag_id, root_dag_id, is_paused, is_subdag, is_active, last_parsed_time, last_pickled, last_expired, scheduler_lock, pickle_id, fileloc, owners, description, default_view, schedule_interval, timetable_description, max_active_tasks, max_active_runs, has_task_concurrency_limits, has_import_errors, next_dagrun, next_dagrun_data_interval_start, next_dagrun_data_interval_end, next_dagrun_create_after) VALUES (%(dag_id)s, %(root_dag_id)s, %(is_paused)s, %(is_subdag)s, %(is_active)s, %(last_parsed_time)s, %(last_pickled)s, %(last_expired)s, %(scheduler_lock)s, %(pickle_id)s, %(fileloc)s, %(owners)s, %(description)s, %(default_view)s, %(schedule_interval)s, %(timetable_description)s, %(max_active_tasks)s, %(max_active_runs)s, %(has_task_concurrency_limits)s, %(has_import_errors)s, %(next_dagrun)s, %(next_dagrun_data_interval_start)s, %(next_dagrun_data_interval_end)s, %(next_dagrun_create_after)s)]
+[parameters: [{'description': 'import to database raw data', 'max_active_runs': 16, 'next_dagrun_create_after': DateTime(2023, 12, 25, 0, 1, 0, tzinfo=Timezone('UT ... (626 characters truncated) ... Timezone('UTC')), 'default_view': 'grid', 'pickle_id': None, 'scheduler_lock': None, 'root_dag_id': None, 'last_expired': None, 'last_pickled': None}]]
+[2023-12-26 06:50:57,781] {processor.py:153} INFO - Started process (PID=271) to work on /opt/airflow/dags/scripts.py
+[2023-12-26 06:50:57,788] {processor.py:641} INFO - Processing file /opt/airflow/dags/scripts.py for tasks to queue
+[2023-12-26 06:50:57,788] {logging_mixin.py:115} INFO - [2023-12-26 06:50:57,788] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/scripts.py
+[2023-12-26 06:50:57,798] {processor.py:651} INFO - DAG(s) dict_keys(['import_dag']) retrieved from /opt/airflow/dags/scripts.py
+[2023-12-26 06:50:57,818] {logging_mixin.py:115} INFO - [2023-12-26 06:50:57,818] {dag.py:2371} INFO - Sync 1 DAGs
+[2023-12-26 06:50:57,823] {logging_mixin.py:115} INFO - [2023-12-26 06:50:57,823] {dag.py:2390} INFO - Creating ORM DAG for import_dag
+[2023-12-26 06:50:57,831] {logging_mixin.py:115} INFO - [2023-12-26 06:50:57,830] {dag.py:2919} INFO - Setting next_dagrun for import_dag to 2023-12-25T00:00:00+00:00, run_after=2023-12-25T00:01:00+00:00
+[2023-12-26 06:50:57,902] {processor.py:164} ERROR - Got an exception! Propagating...
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1609, in _execute_context
+    dialect, self, conn, execution_options, *args, **kw
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in _init_compiled
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in <dictcomp>
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/type_api.py", line 1308, in process
+    return process_param(value, dialect)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/sqlalchemy.py", line 169, in process_bind_param
+    attrs = {key: getattr(value, key) for key in self.attr_keys[type(value)]}
+KeyError: <class 'pendulum.duration.Duration'>
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/dag_processing/processor.py", line 158, in _run_file_processor
+    callback_requests=callback_requests,
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 71, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/dag_processing/processor.py", line 660, in process_file
+    dagbag.sync_to_db()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 71, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 615, in sync_to_db
+    for attempt in run_with_db_retries(logger=self.log):
+  File "/home/airflow/.local/lib/python3.7/site-packages/tenacity/__init__.py", line 382, in __iter__
+    do = self.iter(retry_state=retry_state)
+  File "/home/airflow/.local/lib/python3.7/site-packages/tenacity/__init__.py", line 349, in iter
+    return fut.result()
+  File "/usr/local/lib/python3.7/concurrent/futures/_base.py", line 428, in result
+    return self.__get_result()
+  File "/usr/local/lib/python3.7/concurrent/futures/_base.py", line 384, in __get_result
+    raise self._exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 629, in sync_to_db
+    DAG.bulk_write_to_db(self.dags.values(), session=session)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 68, in wrapper
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dag.py", line 2466, in bulk_write_to_db
+    session.flush()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3255, in flush
+    self._flush(objects)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3395, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/langhelpers.py", line 72, in __exit__
+    with_traceback=exc_tb,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3355, in _flush
+    flush_context.execute()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/unitofwork.py", line 453, in execute
+    rec.execute(self)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/unitofwork.py", line 630, in execute
+    uow,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/persistence.py", line 247, in save_obj
+    insert,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/persistence.py", line 1095, in _emit_insert_statements
+    statement, multiparams, execution_options=execution_options
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1520, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/elements.py", line 314, in _execute_on_connection
+    self, multiparams, params, execution_options
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1399, in _execute_clauseelement
+    cache_hit=cache_hit,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1615, in _execute_context
+    e, util.text_type(statement), parameters, None, None
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1930, in _handle_dbapi_exception
+    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1609, in _execute_context
+    dialect, self, conn, execution_options, *args, **kw
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in _init_compiled
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in <dictcomp>
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/type_api.py", line 1308, in process
+    return process_param(value, dialect)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/sqlalchemy.py", line 169, in process_bind_param
+    attrs = {key: getattr(value, key) for key in self.attr_keys[type(value)]}
+sqlalchemy.exc.StatementError: (builtins.KeyError) <class 'pendulum.duration.Duration'>
+[SQL: INSERT INTO dag (dag_id, root_dag_id, is_paused, is_subdag, is_active, last_parsed_time, last_pickled, last_expired, scheduler_lock, pickle_id, fileloc, owners, description, default_view, schedule_interval, timetable_description, max_active_tasks, max_active_runs, has_task_concurrency_limits, has_import_errors, next_dagrun, next_dagrun_data_interval_start, next_dagrun_data_interval_end, next_dagrun_create_after) VALUES (%(dag_id)s, %(root_dag_id)s, %(is_paused)s, %(is_subdag)s, %(is_active)s, %(last_parsed_time)s, %(last_pickled)s, %(last_expired)s, %(scheduler_lock)s, %(pickle_id)s, %(fileloc)s, %(owners)s, %(description)s, %(default_view)s, %(schedule_interval)s, %(timetable_description)s, %(max_active_tasks)s, %(max_active_runs)s, %(has_task_concurrency_limits)s, %(has_import_errors)s, %(next_dagrun)s, %(next_dagrun_data_interval_start)s, %(next_dagrun_data_interval_end)s, %(next_dagrun_create_after)s)]
+[parameters: [{'description': 'import to database raw data', 'max_active_runs': 16, 'next_dagrun_create_after': DateTime(2023, 12, 25, 0, 1, 0, tzinfo=Timezone('UT ... (626 characters truncated) ... Timezone('UTC')), 'default_view': 'grid', 'pickle_id': None, 'scheduler_lock': None, 'root_dag_id': None, 'last_expired': None, 'last_pickled': None}]]
+[2023-12-26 06:51:27,971] {processor.py:153} INFO - Started process (PID=299) to work on /opt/airflow/dags/scripts.py
+[2023-12-26 06:51:27,971] {processor.py:641} INFO - Processing file /opt/airflow/dags/scripts.py for tasks to queue
+[2023-12-26 06:51:27,972] {logging_mixin.py:115} INFO - [2023-12-26 06:51:27,972] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/scripts.py
+[2023-12-26 06:51:27,975] {processor.py:651} INFO - DAG(s) dict_keys(['import_dag']) retrieved from /opt/airflow/dags/scripts.py
+[2023-12-26 06:51:27,994] {logging_mixin.py:115} INFO - [2023-12-26 06:51:27,994] {dag.py:2371} INFO - Sync 1 DAGs
+[2023-12-26 06:51:28,000] {logging_mixin.py:115} INFO - [2023-12-26 06:51:28,000] {dag.py:2390} INFO - Creating ORM DAG for import_dag
+[2023-12-26 06:51:28,008] {logging_mixin.py:115} INFO - [2023-12-26 06:51:28,008] {dag.py:2919} INFO - Setting next_dagrun for import_dag to 2023-12-25T00:00:00+00:00, run_after=2023-12-25T00:01:00+00:00
+[2023-12-26 06:51:28,080] {processor.py:164} ERROR - Got an exception! Propagating...
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1609, in _execute_context
+    dialect, self, conn, execution_options, *args, **kw
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in _init_compiled
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in <dictcomp>
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/type_api.py", line 1308, in process
+    return process_param(value, dialect)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/sqlalchemy.py", line 169, in process_bind_param
+    attrs = {key: getattr(value, key) for key in self.attr_keys[type(value)]}
+KeyError: <class 'pendulum.duration.Duration'>
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/dag_processing/processor.py", line 158, in _run_file_processor
+    callback_requests=callback_requests,
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 71, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/dag_processing/processor.py", line 660, in process_file
+    dagbag.sync_to_db()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 71, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 615, in sync_to_db
+    for attempt in run_with_db_retries(logger=self.log):
+  File "/home/airflow/.local/lib/python3.7/site-packages/tenacity/__init__.py", line 382, in __iter__
+    do = self.iter(retry_state=retry_state)
+  File "/home/airflow/.local/lib/python3.7/site-packages/tenacity/__init__.py", line 349, in iter
+    return fut.result()
+  File "/usr/local/lib/python3.7/concurrent/futures/_base.py", line 428, in result
+    return self.__get_result()
+  File "/usr/local/lib/python3.7/concurrent/futures/_base.py", line 384, in __get_result
+    raise self._exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 629, in sync_to_db
+    DAG.bulk_write_to_db(self.dags.values(), session=session)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 68, in wrapper
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dag.py", line 2466, in bulk_write_to_db
+    session.flush()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3255, in flush
+    self._flush(objects)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3395, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/langhelpers.py", line 72, in __exit__
+    with_traceback=exc_tb,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3355, in _flush
+    flush_context.execute()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/unitofwork.py", line 453, in execute
+    rec.execute(self)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/unitofwork.py", line 630, in execute
+    uow,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/persistence.py", line 247, in save_obj
+    insert,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/persistence.py", line 1095, in _emit_insert_statements
+    statement, multiparams, execution_options=execution_options
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1520, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/elements.py", line 314, in _execute_on_connection
+    self, multiparams, params, execution_options
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1399, in _execute_clauseelement
+    cache_hit=cache_hit,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1615, in _execute_context
+    e, util.text_type(statement), parameters, None, None
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1930, in _handle_dbapi_exception
+    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1609, in _execute_context
+    dialect, self, conn, execution_options, *args, **kw
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in _init_compiled
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in <dictcomp>
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/type_api.py", line 1308, in process
+    return process_param(value, dialect)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/sqlalchemy.py", line 169, in process_bind_param
+    attrs = {key: getattr(value, key) for key in self.attr_keys[type(value)]}
+sqlalchemy.exc.StatementError: (builtins.KeyError) <class 'pendulum.duration.Duration'>
+[SQL: INSERT INTO dag (dag_id, root_dag_id, is_paused, is_subdag, is_active, last_parsed_time, last_pickled, last_expired, scheduler_lock, pickle_id, fileloc, owners, description, default_view, schedule_interval, timetable_description, max_active_tasks, max_active_runs, has_task_concurrency_limits, has_import_errors, next_dagrun, next_dagrun_data_interval_start, next_dagrun_data_interval_end, next_dagrun_create_after) VALUES (%(dag_id)s, %(root_dag_id)s, %(is_paused)s, %(is_subdag)s, %(is_active)s, %(last_parsed_time)s, %(last_pickled)s, %(last_expired)s, %(scheduler_lock)s, %(pickle_id)s, %(fileloc)s, %(owners)s, %(description)s, %(default_view)s, %(schedule_interval)s, %(timetable_description)s, %(max_active_tasks)s, %(max_active_runs)s, %(has_task_concurrency_limits)s, %(has_import_errors)s, %(next_dagrun)s, %(next_dagrun_data_interval_start)s, %(next_dagrun_data_interval_end)s, %(next_dagrun_create_after)s)]
+[parameters: [{'description': 'import to database raw data', 'max_active_runs': 16, 'next_dagrun_create_after': DateTime(2023, 12, 25, 0, 1, 0, tzinfo=Timezone('UT ... (624 characters truncated) ... Timezone('UTC')), 'default_view': 'grid', 'pickle_id': None, 'scheduler_lock': None, 'root_dag_id': None, 'last_expired': None, 'last_pickled': None}]]
+[2023-12-26 06:51:58,143] {processor.py:153} INFO - Started process (PID=327) to work on /opt/airflow/dags/scripts.py
+[2023-12-26 06:51:58,150] {processor.py:641} INFO - Processing file /opt/airflow/dags/scripts.py for tasks to queue
+[2023-12-26 06:51:58,150] {logging_mixin.py:115} INFO - [2023-12-26 06:51:58,150] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/scripts.py
+[2023-12-26 06:51:58,155] {processor.py:651} INFO - DAG(s) dict_keys(['import_dag']) retrieved from /opt/airflow/dags/scripts.py
+[2023-12-26 06:51:58,173] {logging_mixin.py:115} INFO - [2023-12-26 06:51:58,173] {dag.py:2371} INFO - Sync 1 DAGs
+[2023-12-26 06:51:58,179] {logging_mixin.py:115} INFO - [2023-12-26 06:51:58,178] {dag.py:2390} INFO - Creating ORM DAG for import_dag
+[2023-12-26 06:51:58,186] {logging_mixin.py:115} INFO - [2023-12-26 06:51:58,186] {dag.py:2919} INFO - Setting next_dagrun for import_dag to 2023-12-25T00:00:00+00:00, run_after=2023-12-25T00:01:00+00:00
+[2023-12-26 06:51:58,260] {processor.py:164} ERROR - Got an exception! Propagating...
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1609, in _execute_context
+    dialect, self, conn, execution_options, *args, **kw
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in _init_compiled
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in <dictcomp>
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/type_api.py", line 1308, in process
+    return process_param(value, dialect)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/sqlalchemy.py", line 169, in process_bind_param
+    attrs = {key: getattr(value, key) for key in self.attr_keys[type(value)]}
+KeyError: <class 'pendulum.duration.Duration'>
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/dag_processing/processor.py", line 158, in _run_file_processor
+    callback_requests=callback_requests,
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 71, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/dag_processing/processor.py", line 660, in process_file
+    dagbag.sync_to_db()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 71, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 615, in sync_to_db
+    for attempt in run_with_db_retries(logger=self.log):
+  File "/home/airflow/.local/lib/python3.7/site-packages/tenacity/__init__.py", line 382, in __iter__
+    do = self.iter(retry_state=retry_state)
+  File "/home/airflow/.local/lib/python3.7/site-packages/tenacity/__init__.py", line 349, in iter
+    return fut.result()
+  File "/usr/local/lib/python3.7/concurrent/futures/_base.py", line 428, in result
+    return self.__get_result()
+  File "/usr/local/lib/python3.7/concurrent/futures/_base.py", line 384, in __get_result
+    raise self._exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 629, in sync_to_db
+    DAG.bulk_write_to_db(self.dags.values(), session=session)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 68, in wrapper
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dag.py", line 2466, in bulk_write_to_db
+    session.flush()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3255, in flush
+    self._flush(objects)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3395, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/langhelpers.py", line 72, in __exit__
+    with_traceback=exc_tb,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3355, in _flush
+    flush_context.execute()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/unitofwork.py", line 453, in execute
+    rec.execute(self)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/unitofwork.py", line 630, in execute
+    uow,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/persistence.py", line 247, in save_obj
+    insert,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/persistence.py", line 1095, in _emit_insert_statements
+    statement, multiparams, execution_options=execution_options
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1520, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/elements.py", line 314, in _execute_on_connection
+    self, multiparams, params, execution_options
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1399, in _execute_clauseelement
+    cache_hit=cache_hit,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1615, in _execute_context
+    e, util.text_type(statement), parameters, None, None
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1930, in _handle_dbapi_exception
+    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1609, in _execute_context
+    dialect, self, conn, execution_options, *args, **kw
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in _init_compiled
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in <dictcomp>
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/type_api.py", line 1308, in process
+    return process_param(value, dialect)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/sqlalchemy.py", line 169, in process_bind_param
+    attrs = {key: getattr(value, key) for key in self.attr_keys[type(value)]}
+sqlalchemy.exc.StatementError: (builtins.KeyError) <class 'pendulum.duration.Duration'>
+[SQL: INSERT INTO dag (dag_id, root_dag_id, is_paused, is_subdag, is_active, last_parsed_time, last_pickled, last_expired, scheduler_lock, pickle_id, fileloc, owners, description, default_view, schedule_interval, timetable_description, max_active_tasks, max_active_runs, has_task_concurrency_limits, has_import_errors, next_dagrun, next_dagrun_data_interval_start, next_dagrun_data_interval_end, next_dagrun_create_after) VALUES (%(dag_id)s, %(root_dag_id)s, %(is_paused)s, %(is_subdag)s, %(is_active)s, %(last_parsed_time)s, %(last_pickled)s, %(last_expired)s, %(scheduler_lock)s, %(pickle_id)s, %(fileloc)s, %(owners)s, %(description)s, %(default_view)s, %(schedule_interval)s, %(timetable_description)s, %(max_active_tasks)s, %(max_active_runs)s, %(has_task_concurrency_limits)s, %(has_import_errors)s, %(next_dagrun)s, %(next_dagrun_data_interval_start)s, %(next_dagrun_data_interval_end)s, %(next_dagrun_create_after)s)]
+[parameters: [{'description': 'import to database raw data', 'max_active_runs': 16, 'next_dagrun_create_after': DateTime(2023, 12, 25, 0, 1, 0, tzinfo=Timezone('UT ... (626 characters truncated) ... Timezone('UTC')), 'default_view': 'grid', 'pickle_id': None, 'scheduler_lock': None, 'root_dag_id': None, 'last_expired': None, 'last_pickled': None}]]
+[2023-12-26 06:52:28,320] {processor.py:153} INFO - Started process (PID=352) to work on /opt/airflow/dags/scripts.py
+[2023-12-26 06:52:28,320] {processor.py:641} INFO - Processing file /opt/airflow/dags/scripts.py for tasks to queue
+[2023-12-26 06:52:28,321] {logging_mixin.py:115} INFO - [2023-12-26 06:52:28,321] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/scripts.py
+[2023-12-26 06:52:28,329] {processor.py:651} INFO - DAG(s) dict_keys(['import_dag']) retrieved from /opt/airflow/dags/scripts.py
+[2023-12-26 06:52:28,348] {logging_mixin.py:115} INFO - [2023-12-26 06:52:28,348] {dag.py:2371} INFO - Sync 1 DAGs
+[2023-12-26 06:52:28,354] {logging_mixin.py:115} INFO - [2023-12-26 06:52:28,354] {dag.py:2390} INFO - Creating ORM DAG for import_dag
+[2023-12-26 06:52:28,363] {logging_mixin.py:115} INFO - [2023-12-26 06:52:28,363] {dag.py:2919} INFO - Setting next_dagrun for import_dag to 2023-12-25T00:00:00+00:00, run_after=2023-12-25T00:01:00+00:00
+[2023-12-26 06:52:28,444] {processor.py:164} ERROR - Got an exception! Propagating...
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1609, in _execute_context
+    dialect, self, conn, execution_options, *args, **kw
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in _init_compiled
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in <dictcomp>
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/type_api.py", line 1308, in process
+    return process_param(value, dialect)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/sqlalchemy.py", line 169, in process_bind_param
+    attrs = {key: getattr(value, key) for key in self.attr_keys[type(value)]}
+KeyError: <class 'pendulum.duration.Duration'>
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/dag_processing/processor.py", line 158, in _run_file_processor
+    callback_requests=callback_requests,
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 71, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/dag_processing/processor.py", line 660, in process_file
+    dagbag.sync_to_db()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 71, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 615, in sync_to_db
+    for attempt in run_with_db_retries(logger=self.log):
+  File "/home/airflow/.local/lib/python3.7/site-packages/tenacity/__init__.py", line 382, in __iter__
+    do = self.iter(retry_state=retry_state)
+  File "/home/airflow/.local/lib/python3.7/site-packages/tenacity/__init__.py", line 349, in iter
+    return fut.result()
+  File "/usr/local/lib/python3.7/concurrent/futures/_base.py", line 428, in result
+    return self.__get_result()
+  File "/usr/local/lib/python3.7/concurrent/futures/_base.py", line 384, in __get_result
+    raise self._exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 629, in sync_to_db
+    DAG.bulk_write_to_db(self.dags.values(), session=session)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 68, in wrapper
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dag.py", line 2466, in bulk_write_to_db
+    session.flush()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3255, in flush
+    self._flush(objects)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3395, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/langhelpers.py", line 72, in __exit__
+    with_traceback=exc_tb,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3355, in _flush
+    flush_context.execute()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/unitofwork.py", line 453, in execute
+    rec.execute(self)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/unitofwork.py", line 630, in execute
+    uow,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/persistence.py", line 247, in save_obj
+    insert,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/persistence.py", line 1095, in _emit_insert_statements
+    statement, multiparams, execution_options=execution_options
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1520, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/elements.py", line 314, in _execute_on_connection
+    self, multiparams, params, execution_options
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1399, in _execute_clauseelement
+    cache_hit=cache_hit,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1615, in _execute_context
+    e, util.text_type(statement), parameters, None, None
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1930, in _handle_dbapi_exception
+    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1609, in _execute_context
+    dialect, self, conn, execution_options, *args, **kw
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in _init_compiled
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in <dictcomp>
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/type_api.py", line 1308, in process
+    return process_param(value, dialect)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/sqlalchemy.py", line 169, in process_bind_param
+    attrs = {key: getattr(value, key) for key in self.attr_keys[type(value)]}
+sqlalchemy.exc.StatementError: (builtins.KeyError) <class 'pendulum.duration.Duration'>
+[SQL: INSERT INTO dag (dag_id, root_dag_id, is_paused, is_subdag, is_active, last_parsed_time, last_pickled, last_expired, scheduler_lock, pickle_id, fileloc, owners, description, default_view, schedule_interval, timetable_description, max_active_tasks, max_active_runs, has_task_concurrency_limits, has_import_errors, next_dagrun, next_dagrun_data_interval_start, next_dagrun_data_interval_end, next_dagrun_create_after) VALUES (%(dag_id)s, %(root_dag_id)s, %(is_paused)s, %(is_subdag)s, %(is_active)s, %(last_parsed_time)s, %(last_pickled)s, %(last_expired)s, %(scheduler_lock)s, %(pickle_id)s, %(fileloc)s, %(owners)s, %(description)s, %(default_view)s, %(schedule_interval)s, %(timetable_description)s, %(max_active_tasks)s, %(max_active_runs)s, %(has_task_concurrency_limits)s, %(has_import_errors)s, %(next_dagrun)s, %(next_dagrun_data_interval_start)s, %(next_dagrun_data_interval_end)s, %(next_dagrun_create_after)s)]
+[parameters: [{'description': 'import to database raw data', 'max_active_runs': 16, 'next_dagrun_create_after': DateTime(2023, 12, 25, 0, 1, 0, tzinfo=Timezone('UT ... (626 characters truncated) ... Timezone('UTC')), 'default_view': 'grid', 'pickle_id': None, 'scheduler_lock': None, 'root_dag_id': None, 'last_expired': None, 'last_pickled': None}]]
+[2023-12-26 06:52:58,514] {processor.py:153} INFO - Started process (PID=374) to work on /opt/airflow/dags/scripts.py
+[2023-12-26 06:52:58,521] {processor.py:641} INFO - Processing file /opt/airflow/dags/scripts.py for tasks to queue
+[2023-12-26 06:52:58,521] {logging_mixin.py:115} INFO - [2023-12-26 06:52:58,521] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/scripts.py
+[2023-12-26 06:52:58,531] {processor.py:651} INFO - DAG(s) dict_keys(['import_dag']) retrieved from /opt/airflow/dags/scripts.py
+[2023-12-26 06:52:58,550] {logging_mixin.py:115} INFO - [2023-12-26 06:52:58,550] {dag.py:2371} INFO - Sync 1 DAGs
+[2023-12-26 06:52:58,555] {logging_mixin.py:115} INFO - [2023-12-26 06:52:58,555] {dag.py:2390} INFO - Creating ORM DAG for import_dag
+[2023-12-26 06:52:58,565] {logging_mixin.py:115} INFO - [2023-12-26 06:52:58,564] {dag.py:2919} INFO - Setting next_dagrun for import_dag to 2023-12-25T00:00:00+00:00, run_after=2023-12-25T00:01:00+00:00
+[2023-12-26 06:52:58,645] {processor.py:164} ERROR - Got an exception! Propagating...
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1609, in _execute_context
+    dialect, self, conn, execution_options, *args, **kw
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in _init_compiled
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in <dictcomp>
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/type_api.py", line 1308, in process
+    return process_param(value, dialect)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/sqlalchemy.py", line 169, in process_bind_param
+    attrs = {key: getattr(value, key) for key in self.attr_keys[type(value)]}
+KeyError: <class 'pendulum.duration.Duration'>
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/dag_processing/processor.py", line 158, in _run_file_processor
+    callback_requests=callback_requests,
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 71, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/dag_processing/processor.py", line 660, in process_file
+    dagbag.sync_to_db()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 71, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 615, in sync_to_db
+    for attempt in run_with_db_retries(logger=self.log):
+  File "/home/airflow/.local/lib/python3.7/site-packages/tenacity/__init__.py", line 382, in __iter__
+    do = self.iter(retry_state=retry_state)
+  File "/home/airflow/.local/lib/python3.7/site-packages/tenacity/__init__.py", line 349, in iter
+    return fut.result()
+  File "/usr/local/lib/python3.7/concurrent/futures/_base.py", line 428, in result
+    return self.__get_result()
+  File "/usr/local/lib/python3.7/concurrent/futures/_base.py", line 384, in __get_result
+    raise self._exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 629, in sync_to_db
+    DAG.bulk_write_to_db(self.dags.values(), session=session)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 68, in wrapper
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dag.py", line 2466, in bulk_write_to_db
+    session.flush()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3255, in flush
+    self._flush(objects)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3395, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/langhelpers.py", line 72, in __exit__
+    with_traceback=exc_tb,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3355, in _flush
+    flush_context.execute()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/unitofwork.py", line 453, in execute
+    rec.execute(self)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/unitofwork.py", line 630, in execute
+    uow,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/persistence.py", line 247, in save_obj
+    insert,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/persistence.py", line 1095, in _emit_insert_statements
+    statement, multiparams, execution_options=execution_options
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1520, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/elements.py", line 314, in _execute_on_connection
+    self, multiparams, params, execution_options
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1399, in _execute_clauseelement
+    cache_hit=cache_hit,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1615, in _execute_context
+    e, util.text_type(statement), parameters, None, None
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1930, in _handle_dbapi_exception
+    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1609, in _execute_context
+    dialect, self, conn, execution_options, *args, **kw
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in _init_compiled
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in <dictcomp>
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/type_api.py", line 1308, in process
+    return process_param(value, dialect)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/sqlalchemy.py", line 169, in process_bind_param
+    attrs = {key: getattr(value, key) for key in self.attr_keys[type(value)]}
+sqlalchemy.exc.StatementError: (builtins.KeyError) <class 'pendulum.duration.Duration'>
+[SQL: INSERT INTO dag (dag_id, root_dag_id, is_paused, is_subdag, is_active, last_parsed_time, last_pickled, last_expired, scheduler_lock, pickle_id, fileloc, owners, description, default_view, schedule_interval, timetable_description, max_active_tasks, max_active_runs, has_task_concurrency_limits, has_import_errors, next_dagrun, next_dagrun_data_interval_start, next_dagrun_data_interval_end, next_dagrun_create_after) VALUES (%(dag_id)s, %(root_dag_id)s, %(is_paused)s, %(is_subdag)s, %(is_active)s, %(last_parsed_time)s, %(last_pickled)s, %(last_expired)s, %(scheduler_lock)s, %(pickle_id)s, %(fileloc)s, %(owners)s, %(description)s, %(default_view)s, %(schedule_interval)s, %(timetable_description)s, %(max_active_tasks)s, %(max_active_runs)s, %(has_task_concurrency_limits)s, %(has_import_errors)s, %(next_dagrun)s, %(next_dagrun_data_interval_start)s, %(next_dagrun_data_interval_end)s, %(next_dagrun_create_after)s)]
+[parameters: [{'description': 'import to database raw data', 'max_active_runs': 16, 'next_dagrun_create_after': DateTime(2023, 12, 25, 0, 1, 0, tzinfo=Timezone('UT ... (626 characters truncated) ... Timezone('UTC')), 'default_view': 'grid', 'pickle_id': None, 'scheduler_lock': None, 'root_dag_id': None, 'last_expired': None, 'last_pickled': None}]]
+[2023-12-26 06:53:28,712] {processor.py:153} INFO - Started process (PID=402) to work on /opt/airflow/dags/scripts.py
+[2023-12-26 06:53:28,713] {processor.py:641} INFO - Processing file /opt/airflow/dags/scripts.py for tasks to queue
+[2023-12-26 06:53:28,713] {logging_mixin.py:115} INFO - [2023-12-26 06:53:28,713] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/scripts.py
+[2023-12-26 06:53:28,716] {processor.py:651} INFO - DAG(s) dict_keys(['import_dag']) retrieved from /opt/airflow/dags/scripts.py
+[2023-12-26 06:53:28,734] {logging_mixin.py:115} INFO - [2023-12-26 06:53:28,734] {dag.py:2371} INFO - Sync 1 DAGs
+[2023-12-26 06:53:28,739] {logging_mixin.py:115} INFO - [2023-12-26 06:53:28,739] {dag.py:2390} INFO - Creating ORM DAG for import_dag
+[2023-12-26 06:53:28,747] {logging_mixin.py:115} INFO - [2023-12-26 06:53:28,747] {dag.py:2919} INFO - Setting next_dagrun for import_dag to 2023-12-25T00:00:00+00:00, run_after=2023-12-25T00:01:00+00:00
+[2023-12-26 06:53:28,819] {processor.py:164} ERROR - Got an exception! Propagating...
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1609, in _execute_context
+    dialect, self, conn, execution_options, *args, **kw
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in _init_compiled
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in <dictcomp>
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/type_api.py", line 1308, in process
+    return process_param(value, dialect)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/sqlalchemy.py", line 169, in process_bind_param
+    attrs = {key: getattr(value, key) for key in self.attr_keys[type(value)]}
+KeyError: <class 'pendulum.duration.Duration'>
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/dag_processing/processor.py", line 158, in _run_file_processor
+    callback_requests=callback_requests,
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 71, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/dag_processing/processor.py", line 660, in process_file
+    dagbag.sync_to_db()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 71, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 615, in sync_to_db
+    for attempt in run_with_db_retries(logger=self.log):
+  File "/home/airflow/.local/lib/python3.7/site-packages/tenacity/__init__.py", line 382, in __iter__
+    do = self.iter(retry_state=retry_state)
+  File "/home/airflow/.local/lib/python3.7/site-packages/tenacity/__init__.py", line 349, in iter
+    return fut.result()
+  File "/usr/local/lib/python3.7/concurrent/futures/_base.py", line 428, in result
+    return self.__get_result()
+  File "/usr/local/lib/python3.7/concurrent/futures/_base.py", line 384, in __get_result
+    raise self._exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 629, in sync_to_db
+    DAG.bulk_write_to_db(self.dags.values(), session=session)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 68, in wrapper
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dag.py", line 2466, in bulk_write_to_db
+    session.flush()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3255, in flush
+    self._flush(objects)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3395, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/langhelpers.py", line 72, in __exit__
+    with_traceback=exc_tb,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3355, in _flush
+    flush_context.execute()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/unitofwork.py", line 453, in execute
+    rec.execute(self)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/unitofwork.py", line 630, in execute
+    uow,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/persistence.py", line 247, in save_obj
+    insert,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/persistence.py", line 1095, in _emit_insert_statements
+    statement, multiparams, execution_options=execution_options
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1520, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/elements.py", line 314, in _execute_on_connection
+    self, multiparams, params, execution_options
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1399, in _execute_clauseelement
+    cache_hit=cache_hit,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1615, in _execute_context
+    e, util.text_type(statement), parameters, None, None
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1930, in _handle_dbapi_exception
+    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1609, in _execute_context
+    dialect, self, conn, execution_options, *args, **kw
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in _init_compiled
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in <dictcomp>
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/type_api.py", line 1308, in process
+    return process_param(value, dialect)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/sqlalchemy.py", line 169, in process_bind_param
+    attrs = {key: getattr(value, key) for key in self.attr_keys[type(value)]}
+sqlalchemy.exc.StatementError: (builtins.KeyError) <class 'pendulum.duration.Duration'>
+[SQL: INSERT INTO dag (dag_id, root_dag_id, is_paused, is_subdag, is_active, last_parsed_time, last_pickled, last_expired, scheduler_lock, pickle_id, fileloc, owners, description, default_view, schedule_interval, timetable_description, max_active_tasks, max_active_runs, has_task_concurrency_limits, has_import_errors, next_dagrun, next_dagrun_data_interval_start, next_dagrun_data_interval_end, next_dagrun_create_after) VALUES (%(dag_id)s, %(root_dag_id)s, %(is_paused)s, %(is_subdag)s, %(is_active)s, %(last_parsed_time)s, %(last_pickled)s, %(last_expired)s, %(scheduler_lock)s, %(pickle_id)s, %(fileloc)s, %(owners)s, %(description)s, %(default_view)s, %(schedule_interval)s, %(timetable_description)s, %(max_active_tasks)s, %(max_active_runs)s, %(has_task_concurrency_limits)s, %(has_import_errors)s, %(next_dagrun)s, %(next_dagrun_data_interval_start)s, %(next_dagrun_data_interval_end)s, %(next_dagrun_create_after)s)]
+[parameters: [{'description': 'import to database raw data', 'max_active_runs': 16, 'next_dagrun_create_after': DateTime(2023, 12, 25, 0, 1, 0, tzinfo=Timezone('UT ... (626 characters truncated) ... Timezone('UTC')), 'default_view': 'grid', 'pickle_id': None, 'scheduler_lock': None, 'root_dag_id': None, 'last_expired': None, 'last_pickled': None}]]
+[2023-12-26 06:53:58,882] {processor.py:153} INFO - Started process (PID=429) to work on /opt/airflow/dags/scripts.py
+[2023-12-26 06:53:58,889] {processor.py:641} INFO - Processing file /opt/airflow/dags/scripts.py for tasks to queue
+[2023-12-26 06:53:58,889] {logging_mixin.py:115} INFO - [2023-12-26 06:53:58,889] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/scripts.py
+[2023-12-26 06:53:58,897] {processor.py:651} INFO - DAG(s) dict_keys(['import_dag']) retrieved from /opt/airflow/dags/scripts.py
+[2023-12-26 06:53:58,917] {logging_mixin.py:115} INFO - [2023-12-26 06:53:58,917] {dag.py:2371} INFO - Sync 1 DAGs
+[2023-12-26 06:53:58,922] {logging_mixin.py:115} INFO - [2023-12-26 06:53:58,922] {dag.py:2390} INFO - Creating ORM DAG for import_dag
+[2023-12-26 06:53:58,930] {logging_mixin.py:115} INFO - [2023-12-26 06:53:58,930] {dag.py:2919} INFO - Setting next_dagrun for import_dag to 2023-12-25T00:00:00+00:00, run_after=2023-12-25T00:01:00+00:00
+[2023-12-26 06:53:59,017] {processor.py:164} ERROR - Got an exception! Propagating...
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1609, in _execute_context
+    dialect, self, conn, execution_options, *args, **kw
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in _init_compiled
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in <dictcomp>
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/type_api.py", line 1308, in process
+    return process_param(value, dialect)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/sqlalchemy.py", line 169, in process_bind_param
+    attrs = {key: getattr(value, key) for key in self.attr_keys[type(value)]}
+KeyError: <class 'pendulum.duration.Duration'>
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/dag_processing/processor.py", line 158, in _run_file_processor
+    callback_requests=callback_requests,
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 71, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/dag_processing/processor.py", line 660, in process_file
+    dagbag.sync_to_db()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 71, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 615, in sync_to_db
+    for attempt in run_with_db_retries(logger=self.log):
+  File "/home/airflow/.local/lib/python3.7/site-packages/tenacity/__init__.py", line 382, in __iter__
+    do = self.iter(retry_state=retry_state)
+  File "/home/airflow/.local/lib/python3.7/site-packages/tenacity/__init__.py", line 349, in iter
+    return fut.result()
+  File "/usr/local/lib/python3.7/concurrent/futures/_base.py", line 428, in result
+    return self.__get_result()
+  File "/usr/local/lib/python3.7/concurrent/futures/_base.py", line 384, in __get_result
+    raise self._exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 629, in sync_to_db
+    DAG.bulk_write_to_db(self.dags.values(), session=session)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 68, in wrapper
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dag.py", line 2466, in bulk_write_to_db
+    session.flush()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3255, in flush
+    self._flush(objects)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3395, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/langhelpers.py", line 72, in __exit__
+    with_traceback=exc_tb,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3355, in _flush
+    flush_context.execute()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/unitofwork.py", line 453, in execute
+    rec.execute(self)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/unitofwork.py", line 630, in execute
+    uow,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/persistence.py", line 247, in save_obj
+    insert,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/persistence.py", line 1095, in _emit_insert_statements
+    statement, multiparams, execution_options=execution_options
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1520, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/elements.py", line 314, in _execute_on_connection
+    self, multiparams, params, execution_options
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1399, in _execute_clauseelement
+    cache_hit=cache_hit,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1615, in _execute_context
+    e, util.text_type(statement), parameters, None, None
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1930, in _handle_dbapi_exception
+    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1609, in _execute_context
+    dialect, self, conn, execution_options, *args, **kw
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in _init_compiled
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in <dictcomp>
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/type_api.py", line 1308, in process
+    return process_param(value, dialect)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/sqlalchemy.py", line 169, in process_bind_param
+    attrs = {key: getattr(value, key) for key in self.attr_keys[type(value)]}
+sqlalchemy.exc.StatementError: (builtins.KeyError) <class 'pendulum.duration.Duration'>
+[SQL: INSERT INTO dag (dag_id, root_dag_id, is_paused, is_subdag, is_active, last_parsed_time, last_pickled, last_expired, scheduler_lock, pickle_id, fileloc, owners, description, default_view, schedule_interval, timetable_description, max_active_tasks, max_active_runs, has_task_concurrency_limits, has_import_errors, next_dagrun, next_dagrun_data_interval_start, next_dagrun_data_interval_end, next_dagrun_create_after) VALUES (%(dag_id)s, %(root_dag_id)s, %(is_paused)s, %(is_subdag)s, %(is_active)s, %(last_parsed_time)s, %(last_pickled)s, %(last_expired)s, %(scheduler_lock)s, %(pickle_id)s, %(fileloc)s, %(owners)s, %(description)s, %(default_view)s, %(schedule_interval)s, %(timetable_description)s, %(max_active_tasks)s, %(max_active_runs)s, %(has_task_concurrency_limits)s, %(has_import_errors)s, %(next_dagrun)s, %(next_dagrun_data_interval_start)s, %(next_dagrun_data_interval_end)s, %(next_dagrun_create_after)s)]
+[parameters: [{'description': 'import to database raw data', 'max_active_runs': 16, 'next_dagrun_create_after': DateTime(2023, 12, 25, 0, 1, 0, tzinfo=Timezone('UT ... (626 characters truncated) ... Timezone('UTC')), 'default_view': 'grid', 'pickle_id': None, 'scheduler_lock': None, 'root_dag_id': None, 'last_expired': None, 'last_pickled': None}]]
+[2023-12-26 06:54:29,089] {processor.py:153} INFO - Started process (PID=457) to work on /opt/airflow/dags/scripts.py
+[2023-12-26 06:54:29,090] {processor.py:641} INFO - Processing file /opt/airflow/dags/scripts.py for tasks to queue
+[2023-12-26 06:54:29,090] {logging_mixin.py:115} INFO - [2023-12-26 06:54:29,090] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/scripts.py
+[2023-12-26 06:54:29,097] {processor.py:651} INFO - DAG(s) dict_keys(['import_dag']) retrieved from /opt/airflow/dags/scripts.py
+[2023-12-26 06:54:29,115] {logging_mixin.py:115} INFO - [2023-12-26 06:54:29,115] {dag.py:2371} INFO - Sync 1 DAGs
+[2023-12-26 06:54:29,120] {logging_mixin.py:115} INFO - [2023-12-26 06:54:29,120] {dag.py:2390} INFO - Creating ORM DAG for import_dag
+[2023-12-26 06:54:29,128] {logging_mixin.py:115} INFO - [2023-12-26 06:54:29,128] {dag.py:2919} INFO - Setting next_dagrun for import_dag to 2023-12-25T00:00:00+00:00, run_after=2023-12-25T00:01:00+00:00
+[2023-12-26 06:54:29,200] {processor.py:164} ERROR - Got an exception! Propagating...
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1609, in _execute_context
+    dialect, self, conn, execution_options, *args, **kw
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in _init_compiled
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in <dictcomp>
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/type_api.py", line 1308, in process
+    return process_param(value, dialect)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/sqlalchemy.py", line 169, in process_bind_param
+    attrs = {key: getattr(value, key) for key in self.attr_keys[type(value)]}
+KeyError: <class 'pendulum.duration.Duration'>
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/dag_processing/processor.py", line 158, in _run_file_processor
+    callback_requests=callback_requests,
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 71, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/dag_processing/processor.py", line 660, in process_file
+    dagbag.sync_to_db()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 71, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 615, in sync_to_db
+    for attempt in run_with_db_retries(logger=self.log):
+  File "/home/airflow/.local/lib/python3.7/site-packages/tenacity/__init__.py", line 382, in __iter__
+    do = self.iter(retry_state=retry_state)
+  File "/home/airflow/.local/lib/python3.7/site-packages/tenacity/__init__.py", line 349, in iter
+    return fut.result()
+  File "/usr/local/lib/python3.7/concurrent/futures/_base.py", line 428, in result
+    return self.__get_result()
+  File "/usr/local/lib/python3.7/concurrent/futures/_base.py", line 384, in __get_result
+    raise self._exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 629, in sync_to_db
+    DAG.bulk_write_to_db(self.dags.values(), session=session)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 68, in wrapper
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dag.py", line 2466, in bulk_write_to_db
+    session.flush()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3255, in flush
+    self._flush(objects)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3395, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/langhelpers.py", line 72, in __exit__
+    with_traceback=exc_tb,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3355, in _flush
+    flush_context.execute()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/unitofwork.py", line 453, in execute
+    rec.execute(self)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/unitofwork.py", line 630, in execute
+    uow,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/persistence.py", line 247, in save_obj
+    insert,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/persistence.py", line 1095, in _emit_insert_statements
+    statement, multiparams, execution_options=execution_options
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1520, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/elements.py", line 314, in _execute_on_connection
+    self, multiparams, params, execution_options
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1399, in _execute_clauseelement
+    cache_hit=cache_hit,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1615, in _execute_context
+    e, util.text_type(statement), parameters, None, None
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1930, in _handle_dbapi_exception
+    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1609, in _execute_context
+    dialect, self, conn, execution_options, *args, **kw
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in _init_compiled
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in <dictcomp>
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/type_api.py", line 1308, in process
+    return process_param(value, dialect)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/sqlalchemy.py", line 169, in process_bind_param
+    attrs = {key: getattr(value, key) for key in self.attr_keys[type(value)]}
+sqlalchemy.exc.StatementError: (builtins.KeyError) <class 'pendulum.duration.Duration'>
+[SQL: INSERT INTO dag (dag_id, root_dag_id, is_paused, is_subdag, is_active, last_parsed_time, last_pickled, last_expired, scheduler_lock, pickle_id, fileloc, owners, description, default_view, schedule_interval, timetable_description, max_active_tasks, max_active_runs, has_task_concurrency_limits, has_import_errors, next_dagrun, next_dagrun_data_interval_start, next_dagrun_data_interval_end, next_dagrun_create_after) VALUES (%(dag_id)s, %(root_dag_id)s, %(is_paused)s, %(is_subdag)s, %(is_active)s, %(last_parsed_time)s, %(last_pickled)s, %(last_expired)s, %(scheduler_lock)s, %(pickle_id)s, %(fileloc)s, %(owners)s, %(description)s, %(default_view)s, %(schedule_interval)s, %(timetable_description)s, %(max_active_tasks)s, %(max_active_runs)s, %(has_task_concurrency_limits)s, %(has_import_errors)s, %(next_dagrun)s, %(next_dagrun_data_interval_start)s, %(next_dagrun_data_interval_end)s, %(next_dagrun_create_after)s)]
+[parameters: [{'description': 'import to database raw data', 'max_active_runs': 16, 'next_dagrun_create_after': DateTime(2023, 12, 25, 0, 1, 0, tzinfo=Timezone('UT ... (626 characters truncated) ... Timezone('UTC')), 'default_view': 'grid', 'pickle_id': None, 'scheduler_lock': None, 'root_dag_id': None, 'last_expired': None, 'last_pickled': None}]]
+[2023-12-26 06:54:59,270] {processor.py:153} INFO - Started process (PID=476) to work on /opt/airflow/dags/scripts.py
+[2023-12-26 06:54:59,277] {processor.py:641} INFO - Processing file /opt/airflow/dags/scripts.py for tasks to queue
+[2023-12-26 06:54:59,277] {logging_mixin.py:115} INFO - [2023-12-26 06:54:59,277] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/scripts.py
+[2023-12-26 06:54:59,287] {processor.py:651} INFO - DAG(s) dict_keys(['import_dag']) retrieved from /opt/airflow/dags/scripts.py
+[2023-12-26 06:54:59,305] {logging_mixin.py:115} INFO - [2023-12-26 06:54:59,305] {dag.py:2371} INFO - Sync 1 DAGs
+[2023-12-26 06:54:59,310] {logging_mixin.py:115} INFO - [2023-12-26 06:54:59,310] {dag.py:2390} INFO - Creating ORM DAG for import_dag
+[2023-12-26 06:54:59,317] {logging_mixin.py:115} INFO - [2023-12-26 06:54:59,317] {dag.py:2919} INFO - Setting next_dagrun for import_dag to 2023-12-25T00:00:00+00:00, run_after=2023-12-25T00:01:00+00:00
+[2023-12-26 06:54:59,390] {processor.py:164} ERROR - Got an exception! Propagating...
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1609, in _execute_context
+    dialect, self, conn, execution_options, *args, **kw
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in _init_compiled
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in <dictcomp>
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/type_api.py", line 1308, in process
+    return process_param(value, dialect)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/sqlalchemy.py", line 169, in process_bind_param
+    attrs = {key: getattr(value, key) for key in self.attr_keys[type(value)]}
+KeyError: <class 'pendulum.duration.Duration'>
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/dag_processing/processor.py", line 158, in _run_file_processor
+    callback_requests=callback_requests,
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 71, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/dag_processing/processor.py", line 660, in process_file
+    dagbag.sync_to_db()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 71, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 615, in sync_to_db
+    for attempt in run_with_db_retries(logger=self.log):
+  File "/home/airflow/.local/lib/python3.7/site-packages/tenacity/__init__.py", line 382, in __iter__
+    do = self.iter(retry_state=retry_state)
+  File "/home/airflow/.local/lib/python3.7/site-packages/tenacity/__init__.py", line 349, in iter
+    return fut.result()
+  File "/usr/local/lib/python3.7/concurrent/futures/_base.py", line 428, in result
+    return self.__get_result()
+  File "/usr/local/lib/python3.7/concurrent/futures/_base.py", line 384, in __get_result
+    raise self._exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 629, in sync_to_db
+    DAG.bulk_write_to_db(self.dags.values(), session=session)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 68, in wrapper
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dag.py", line 2466, in bulk_write_to_db
+    session.flush()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3255, in flush
+    self._flush(objects)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3395, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/langhelpers.py", line 72, in __exit__
+    with_traceback=exc_tb,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3355, in _flush
+    flush_context.execute()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/unitofwork.py", line 453, in execute
+    rec.execute(self)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/unitofwork.py", line 630, in execute
+    uow,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/persistence.py", line 247, in save_obj
+    insert,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/persistence.py", line 1095, in _emit_insert_statements
+    statement, multiparams, execution_options=execution_options
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1520, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/elements.py", line 314, in _execute_on_connection
+    self, multiparams, params, execution_options
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1399, in _execute_clauseelement
+    cache_hit=cache_hit,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1615, in _execute_context
+    e, util.text_type(statement), parameters, None, None
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1930, in _handle_dbapi_exception
+    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1609, in _execute_context
+    dialect, self, conn, execution_options, *args, **kw
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in _init_compiled
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in <dictcomp>
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/type_api.py", line 1308, in process
+    return process_param(value, dialect)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/sqlalchemy.py", line 169, in process_bind_param
+    attrs = {key: getattr(value, key) for key in self.attr_keys[type(value)]}
+sqlalchemy.exc.StatementError: (builtins.KeyError) <class 'pendulum.duration.Duration'>
+[SQL: INSERT INTO dag (dag_id, root_dag_id, is_paused, is_subdag, is_active, last_parsed_time, last_pickled, last_expired, scheduler_lock, pickle_id, fileloc, owners, description, default_view, schedule_interval, timetable_description, max_active_tasks, max_active_runs, has_task_concurrency_limits, has_import_errors, next_dagrun, next_dagrun_data_interval_start, next_dagrun_data_interval_end, next_dagrun_create_after) VALUES (%(dag_id)s, %(root_dag_id)s, %(is_paused)s, %(is_subdag)s, %(is_active)s, %(last_parsed_time)s, %(last_pickled)s, %(last_expired)s, %(scheduler_lock)s, %(pickle_id)s, %(fileloc)s, %(owners)s, %(description)s, %(default_view)s, %(schedule_interval)s, %(timetable_description)s, %(max_active_tasks)s, %(max_active_runs)s, %(has_task_concurrency_limits)s, %(has_import_errors)s, %(next_dagrun)s, %(next_dagrun_data_interval_start)s, %(next_dagrun_data_interval_end)s, %(next_dagrun_create_after)s)]
+[parameters: [{'description': 'import to database raw data', 'max_active_runs': 16, 'next_dagrun_create_after': DateTime(2023, 12, 25, 0, 1, 0, tzinfo=Timezone('UT ... (626 characters truncated) ... Timezone('UTC')), 'default_view': 'grid', 'pickle_id': None, 'scheduler_lock': None, 'root_dag_id': None, 'last_expired': None, 'last_pickled': None}]]
+[2023-12-26 06:55:29,463] {processor.py:153} INFO - Started process (PID=504) to work on /opt/airflow/dags/scripts.py
+[2023-12-26 06:55:29,464] {processor.py:641} INFO - Processing file /opt/airflow/dags/scripts.py for tasks to queue
+[2023-12-26 06:55:29,465] {logging_mixin.py:115} INFO - [2023-12-26 06:55:29,465] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/scripts.py
+[2023-12-26 06:55:29,474] {processor.py:651} INFO - DAG(s) dict_keys(['import_dag']) retrieved from /opt/airflow/dags/scripts.py
+[2023-12-26 06:55:29,492] {logging_mixin.py:115} INFO - [2023-12-26 06:55:29,492] {dag.py:2371} INFO - Sync 1 DAGs
+[2023-12-26 06:55:29,497] {logging_mixin.py:115} INFO - [2023-12-26 06:55:29,497] {dag.py:2390} INFO - Creating ORM DAG for import_dag
+[2023-12-26 06:55:29,504] {logging_mixin.py:115} INFO - [2023-12-26 06:55:29,504] {dag.py:2919} INFO - Setting next_dagrun for import_dag to 2023-12-25T00:00:00+00:00, run_after=2023-12-25T00:01:00+00:00
+[2023-12-26 06:55:29,578] {processor.py:164} ERROR - Got an exception! Propagating...
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1609, in _execute_context
+    dialect, self, conn, execution_options, *args, **kw
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in _init_compiled
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in <dictcomp>
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/type_api.py", line 1308, in process
+    return process_param(value, dialect)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/sqlalchemy.py", line 169, in process_bind_param
+    attrs = {key: getattr(value, key) for key in self.attr_keys[type(value)]}
+KeyError: <class 'pendulum.duration.Duration'>
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/dag_processing/processor.py", line 158, in _run_file_processor
+    callback_requests=callback_requests,
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 71, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/dag_processing/processor.py", line 660, in process_file
+    dagbag.sync_to_db()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 71, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 615, in sync_to_db
+    for attempt in run_with_db_retries(logger=self.log):
+  File "/home/airflow/.local/lib/python3.7/site-packages/tenacity/__init__.py", line 382, in __iter__
+    do = self.iter(retry_state=retry_state)
+  File "/home/airflow/.local/lib/python3.7/site-packages/tenacity/__init__.py", line 349, in iter
+    return fut.result()
+  File "/usr/local/lib/python3.7/concurrent/futures/_base.py", line 428, in result
+    return self.__get_result()
+  File "/usr/local/lib/python3.7/concurrent/futures/_base.py", line 384, in __get_result
+    raise self._exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 629, in sync_to_db
+    DAG.bulk_write_to_db(self.dags.values(), session=session)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 68, in wrapper
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dag.py", line 2466, in bulk_write_to_db
+    session.flush()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3255, in flush
+    self._flush(objects)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3395, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/langhelpers.py", line 72, in __exit__
+    with_traceback=exc_tb,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3355, in _flush
+    flush_context.execute()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/unitofwork.py", line 453, in execute
+    rec.execute(self)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/unitofwork.py", line 630, in execute
+    uow,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/persistence.py", line 247, in save_obj
+    insert,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/persistence.py", line 1095, in _emit_insert_statements
+    statement, multiparams, execution_options=execution_options
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1520, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/elements.py", line 314, in _execute_on_connection
+    self, multiparams, params, execution_options
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1399, in _execute_clauseelement
+    cache_hit=cache_hit,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1615, in _execute_context
+    e, util.text_type(statement), parameters, None, None
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1930, in _handle_dbapi_exception
+    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1609, in _execute_context
+    dialect, self, conn, execution_options, *args, **kw
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in _init_compiled
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in <dictcomp>
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/type_api.py", line 1308, in process
+    return process_param(value, dialect)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/sqlalchemy.py", line 169, in process_bind_param
+    attrs = {key: getattr(value, key) for key in self.attr_keys[type(value)]}
+sqlalchemy.exc.StatementError: (builtins.KeyError) <class 'pendulum.duration.Duration'>
+[SQL: INSERT INTO dag (dag_id, root_dag_id, is_paused, is_subdag, is_active, last_parsed_time, last_pickled, last_expired, scheduler_lock, pickle_id, fileloc, owners, description, default_view, schedule_interval, timetable_description, max_active_tasks, max_active_runs, has_task_concurrency_limits, has_import_errors, next_dagrun, next_dagrun_data_interval_start, next_dagrun_data_interval_end, next_dagrun_create_after) VALUES (%(dag_id)s, %(root_dag_id)s, %(is_paused)s, %(is_subdag)s, %(is_active)s, %(last_parsed_time)s, %(last_pickled)s, %(last_expired)s, %(scheduler_lock)s, %(pickle_id)s, %(fileloc)s, %(owners)s, %(description)s, %(default_view)s, %(schedule_interval)s, %(timetable_description)s, %(max_active_tasks)s, %(max_active_runs)s, %(has_task_concurrency_limits)s, %(has_import_errors)s, %(next_dagrun)s, %(next_dagrun_data_interval_start)s, %(next_dagrun_data_interval_end)s, %(next_dagrun_create_after)s)]
+[parameters: [{'description': 'import to database raw data', 'max_active_runs': 16, 'next_dagrun_create_after': DateTime(2023, 12, 25, 0, 1, 0, tzinfo=Timezone('UT ... (626 characters truncated) ... Timezone('UTC')), 'default_view': 'grid', 'pickle_id': None, 'scheduler_lock': None, 'root_dag_id': None, 'last_expired': None, 'last_pickled': None}]]
+[2023-12-26 06:55:59,640] {processor.py:153} INFO - Started process (PID=532) to work on /opt/airflow/dags/scripts.py
+[2023-12-26 06:55:59,640] {processor.py:641} INFO - Processing file /opt/airflow/dags/scripts.py for tasks to queue
+[2023-12-26 06:55:59,641] {logging_mixin.py:115} INFO - [2023-12-26 06:55:59,641] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/scripts.py
+[2023-12-26 06:55:59,644] {processor.py:651} INFO - DAG(s) dict_keys(['import_dag']) retrieved from /opt/airflow/dags/scripts.py
+[2023-12-26 06:55:59,661] {logging_mixin.py:115} INFO - [2023-12-26 06:55:59,661] {dag.py:2371} INFO - Sync 1 DAGs
+[2023-12-26 06:55:59,667] {logging_mixin.py:115} INFO - [2023-12-26 06:55:59,667] {dag.py:2390} INFO - Creating ORM DAG for import_dag
+[2023-12-26 06:55:59,675] {logging_mixin.py:115} INFO - [2023-12-26 06:55:59,675] {dag.py:2919} INFO - Setting next_dagrun for import_dag to 2023-12-25T00:00:00+00:00, run_after=2023-12-25T00:01:00+00:00
+[2023-12-26 06:55:59,752] {processor.py:164} ERROR - Got an exception! Propagating...
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1609, in _execute_context
+    dialect, self, conn, execution_options, *args, **kw
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in _init_compiled
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in <dictcomp>
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/type_api.py", line 1308, in process
+    return process_param(value, dialect)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/sqlalchemy.py", line 169, in process_bind_param
+    attrs = {key: getattr(value, key) for key in self.attr_keys[type(value)]}
+KeyError: <class 'pendulum.duration.Duration'>
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/dag_processing/processor.py", line 158, in _run_file_processor
+    callback_requests=callback_requests,
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 71, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/dag_processing/processor.py", line 660, in process_file
+    dagbag.sync_to_db()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 71, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 615, in sync_to_db
+    for attempt in run_with_db_retries(logger=self.log):
+  File "/home/airflow/.local/lib/python3.7/site-packages/tenacity/__init__.py", line 382, in __iter__
+    do = self.iter(retry_state=retry_state)
+  File "/home/airflow/.local/lib/python3.7/site-packages/tenacity/__init__.py", line 349, in iter
+    return fut.result()
+  File "/usr/local/lib/python3.7/concurrent/futures/_base.py", line 428, in result
+    return self.__get_result()
+  File "/usr/local/lib/python3.7/concurrent/futures/_base.py", line 384, in __get_result
+    raise self._exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 629, in sync_to_db
+    DAG.bulk_write_to_db(self.dags.values(), session=session)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 68, in wrapper
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dag.py", line 2466, in bulk_write_to_db
+    session.flush()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3255, in flush
+    self._flush(objects)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3395, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/langhelpers.py", line 72, in __exit__
+    with_traceback=exc_tb,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3355, in _flush
+    flush_context.execute()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/unitofwork.py", line 453, in execute
+    rec.execute(self)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/unitofwork.py", line 630, in execute
+    uow,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/persistence.py", line 247, in save_obj
+    insert,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/persistence.py", line 1095, in _emit_insert_statements
+    statement, multiparams, execution_options=execution_options
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1520, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/elements.py", line 314, in _execute_on_connection
+    self, multiparams, params, execution_options
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1399, in _execute_clauseelement
+    cache_hit=cache_hit,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1615, in _execute_context
+    e, util.text_type(statement), parameters, None, None
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1930, in _handle_dbapi_exception
+    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1609, in _execute_context
+    dialect, self, conn, execution_options, *args, **kw
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in _init_compiled
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in <dictcomp>
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/type_api.py", line 1308, in process
+    return process_param(value, dialect)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/sqlalchemy.py", line 169, in process_bind_param
+    attrs = {key: getattr(value, key) for key in self.attr_keys[type(value)]}
+sqlalchemy.exc.StatementError: (builtins.KeyError) <class 'pendulum.duration.Duration'>
+[SQL: INSERT INTO dag (dag_id, root_dag_id, is_paused, is_subdag, is_active, last_parsed_time, last_pickled, last_expired, scheduler_lock, pickle_id, fileloc, owners, description, default_view, schedule_interval, timetable_description, max_active_tasks, max_active_runs, has_task_concurrency_limits, has_import_errors, next_dagrun, next_dagrun_data_interval_start, next_dagrun_data_interval_end, next_dagrun_create_after) VALUES (%(dag_id)s, %(root_dag_id)s, %(is_paused)s, %(is_subdag)s, %(is_active)s, %(last_parsed_time)s, %(last_pickled)s, %(last_expired)s, %(scheduler_lock)s, %(pickle_id)s, %(fileloc)s, %(owners)s, %(description)s, %(default_view)s, %(schedule_interval)s, %(timetable_description)s, %(max_active_tasks)s, %(max_active_runs)s, %(has_task_concurrency_limits)s, %(has_import_errors)s, %(next_dagrun)s, %(next_dagrun_data_interval_start)s, %(next_dagrun_data_interval_end)s, %(next_dagrun_create_after)s)]
+[parameters: [{'description': 'import to database raw data', 'max_active_runs': 16, 'next_dagrun_create_after': DateTime(2023, 12, 25, 0, 1, 0, tzinfo=Timezone('UT ... (626 characters truncated) ... Timezone('UTC')), 'default_view': 'grid', 'pickle_id': None, 'scheduler_lock': None, 'root_dag_id': None, 'last_expired': None, 'last_pickled': None}]]
+[2023-12-26 06:56:29,822] {processor.py:153} INFO - Started process (PID=560) to work on /opt/airflow/dags/scripts.py
+[2023-12-26 06:56:29,823] {processor.py:641} INFO - Processing file /opt/airflow/dags/scripts.py for tasks to queue
+[2023-12-26 06:56:29,823] {logging_mixin.py:115} INFO - [2023-12-26 06:56:29,823] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/scripts.py
+[2023-12-26 06:56:29,826] {processor.py:651} INFO - DAG(s) dict_keys(['import_dag']) retrieved from /opt/airflow/dags/scripts.py
+[2023-12-26 06:56:29,844] {logging_mixin.py:115} INFO - [2023-12-26 06:56:29,844] {dag.py:2371} INFO - Sync 1 DAGs
+[2023-12-26 06:56:29,850] {logging_mixin.py:115} INFO - [2023-12-26 06:56:29,850] {dag.py:2390} INFO - Creating ORM DAG for import_dag
+[2023-12-26 06:56:29,924] {logging_mixin.py:115} INFO - [2023-12-26 06:56:29,924] {dag.py:2919} INFO - Setting next_dagrun for import_dag to 2023-12-25T00:00:00+00:00, run_after=2023-12-25T00:01:00+00:00
+[2023-12-26 06:56:29,927] {processor.py:164} ERROR - Got an exception! Propagating...
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1609, in _execute_context
+    dialect, self, conn, execution_options, *args, **kw
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in _init_compiled
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in <dictcomp>
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/type_api.py", line 1308, in process
+    return process_param(value, dialect)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/sqlalchemy.py", line 169, in process_bind_param
+    attrs = {key: getattr(value, key) for key in self.attr_keys[type(value)]}
+KeyError: <class 'pendulum.duration.Duration'>
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/dag_processing/processor.py", line 158, in _run_file_processor
+    callback_requests=callback_requests,
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 71, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/dag_processing/processor.py", line 660, in process_file
+    dagbag.sync_to_db()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 71, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 615, in sync_to_db
+    for attempt in run_with_db_retries(logger=self.log):
+  File "/home/airflow/.local/lib/python3.7/site-packages/tenacity/__init__.py", line 382, in __iter__
+    do = self.iter(retry_state=retry_state)
+  File "/home/airflow/.local/lib/python3.7/site-packages/tenacity/__init__.py", line 349, in iter
+    return fut.result()
+  File "/usr/local/lib/python3.7/concurrent/futures/_base.py", line 428, in result
+    return self.__get_result()
+  File "/usr/local/lib/python3.7/concurrent/futures/_base.py", line 384, in __get_result
+    raise self._exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 629, in sync_to_db
+    DAG.bulk_write_to_db(self.dags.values(), session=session)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 68, in wrapper
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dag.py", line 2466, in bulk_write_to_db
+    session.flush()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3255, in flush
+    self._flush(objects)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3395, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/langhelpers.py", line 72, in __exit__
+    with_traceback=exc_tb,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3355, in _flush
+    flush_context.execute()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/unitofwork.py", line 453, in execute
+    rec.execute(self)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/unitofwork.py", line 630, in execute
+    uow,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/persistence.py", line 247, in save_obj
+    insert,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/persistence.py", line 1095, in _emit_insert_statements
+    statement, multiparams, execution_options=execution_options
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1520, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/elements.py", line 314, in _execute_on_connection
+    self, multiparams, params, execution_options
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1399, in _execute_clauseelement
+    cache_hit=cache_hit,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1615, in _execute_context
+    e, util.text_type(statement), parameters, None, None
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1930, in _handle_dbapi_exception
+    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1609, in _execute_context
+    dialect, self, conn, execution_options, *args, **kw
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in _init_compiled
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in <dictcomp>
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/type_api.py", line 1308, in process
+    return process_param(value, dialect)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/sqlalchemy.py", line 169, in process_bind_param
+    attrs = {key: getattr(value, key) for key in self.attr_keys[type(value)]}
+sqlalchemy.exc.StatementError: (builtins.KeyError) <class 'pendulum.duration.Duration'>
+[SQL: INSERT INTO dag (dag_id, root_dag_id, is_paused, is_subdag, is_active, last_parsed_time, last_pickled, last_expired, scheduler_lock, pickle_id, fileloc, owners, description, default_view, schedule_interval, timetable_description, max_active_tasks, max_active_runs, has_task_concurrency_limits, has_import_errors, next_dagrun, next_dagrun_data_interval_start, next_dagrun_data_interval_end, next_dagrun_create_after) VALUES (%(dag_id)s, %(root_dag_id)s, %(is_paused)s, %(is_subdag)s, %(is_active)s, %(last_parsed_time)s, %(last_pickled)s, %(last_expired)s, %(scheduler_lock)s, %(pickle_id)s, %(fileloc)s, %(owners)s, %(description)s, %(default_view)s, %(schedule_interval)s, %(timetable_description)s, %(max_active_tasks)s, %(max_active_runs)s, %(has_task_concurrency_limits)s, %(has_import_errors)s, %(next_dagrun)s, %(next_dagrun_data_interval_start)s, %(next_dagrun_data_interval_end)s, %(next_dagrun_create_after)s)]
+[parameters: [{'description': 'import to database raw data', 'max_active_runs': 16, 'next_dagrun_create_after': DateTime(2023, 12, 25, 0, 1, 0, tzinfo=Timezone('UT ... (626 characters truncated) ... Timezone('UTC')), 'default_view': 'grid', 'pickle_id': None, 'scheduler_lock': None, 'root_dag_id': None, 'last_expired': None, 'last_pickled': None}]]
+[2023-12-26 06:56:59,999] {processor.py:153} INFO - Started process (PID=579) to work on /opt/airflow/dags/scripts.py
+[2023-12-26 06:57:00,006] {processor.py:641} INFO - Processing file /opt/airflow/dags/scripts.py for tasks to queue
+[2023-12-26 06:57:00,006] {logging_mixin.py:115} INFO - [2023-12-26 06:57:00,006] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/scripts.py
+[2023-12-26 06:57:00,017] {processor.py:651} INFO - DAG(s) dict_keys(['import_dag']) retrieved from /opt/airflow/dags/scripts.py
+[2023-12-26 06:57:00,035] {logging_mixin.py:115} INFO - [2023-12-26 06:57:00,035] {dag.py:2371} INFO - Sync 1 DAGs
+[2023-12-26 06:57:00,041] {logging_mixin.py:115} INFO - [2023-12-26 06:57:00,041] {dag.py:2390} INFO - Creating ORM DAG for import_dag
+[2023-12-26 06:57:00,116] {logging_mixin.py:115} INFO - [2023-12-26 06:57:00,116] {dag.py:2919} INFO - Setting next_dagrun for import_dag to 2023-12-25T00:00:00+00:00, run_after=2023-12-25T00:01:00+00:00
+[2023-12-26 06:57:00,119] {processor.py:164} ERROR - Got an exception! Propagating...
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1609, in _execute_context
+    dialect, self, conn, execution_options, *args, **kw
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in _init_compiled
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in <dictcomp>
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/type_api.py", line 1308, in process
+    return process_param(value, dialect)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/sqlalchemy.py", line 169, in process_bind_param
+    attrs = {key: getattr(value, key) for key in self.attr_keys[type(value)]}
+KeyError: <class 'pendulum.duration.Duration'>
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/dag_processing/processor.py", line 158, in _run_file_processor
+    callback_requests=callback_requests,
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 71, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/dag_processing/processor.py", line 660, in process_file
+    dagbag.sync_to_db()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 71, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 615, in sync_to_db
+    for attempt in run_with_db_retries(logger=self.log):
+  File "/home/airflow/.local/lib/python3.7/site-packages/tenacity/__init__.py", line 382, in __iter__
+    do = self.iter(retry_state=retry_state)
+  File "/home/airflow/.local/lib/python3.7/site-packages/tenacity/__init__.py", line 349, in iter
+    return fut.result()
+  File "/usr/local/lib/python3.7/concurrent/futures/_base.py", line 428, in result
+    return self.__get_result()
+  File "/usr/local/lib/python3.7/concurrent/futures/_base.py", line 384, in __get_result
+    raise self._exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 629, in sync_to_db
+    DAG.bulk_write_to_db(self.dags.values(), session=session)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 68, in wrapper
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dag.py", line 2466, in bulk_write_to_db
+    session.flush()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3255, in flush
+    self._flush(objects)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3395, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/langhelpers.py", line 72, in __exit__
+    with_traceback=exc_tb,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3355, in _flush
+    flush_context.execute()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/unitofwork.py", line 453, in execute
+    rec.execute(self)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/unitofwork.py", line 630, in execute
+    uow,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/persistence.py", line 247, in save_obj
+    insert,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/persistence.py", line 1095, in _emit_insert_statements
+    statement, multiparams, execution_options=execution_options
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1520, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/elements.py", line 314, in _execute_on_connection
+    self, multiparams, params, execution_options
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1399, in _execute_clauseelement
+    cache_hit=cache_hit,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1615, in _execute_context
+    e, util.text_type(statement), parameters, None, None
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1930, in _handle_dbapi_exception
+    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1609, in _execute_context
+    dialect, self, conn, execution_options, *args, **kw
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in _init_compiled
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in <dictcomp>
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/type_api.py", line 1308, in process
+    return process_param(value, dialect)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/sqlalchemy.py", line 169, in process_bind_param
+    attrs = {key: getattr(value, key) for key in self.attr_keys[type(value)]}
+sqlalchemy.exc.StatementError: (builtins.KeyError) <class 'pendulum.duration.Duration'>
+[SQL: INSERT INTO dag (dag_id, root_dag_id, is_paused, is_subdag, is_active, last_parsed_time, last_pickled, last_expired, scheduler_lock, pickle_id, fileloc, owners, description, default_view, schedule_interval, timetable_description, max_active_tasks, max_active_runs, has_task_concurrency_limits, has_import_errors, next_dagrun, next_dagrun_data_interval_start, next_dagrun_data_interval_end, next_dagrun_create_after) VALUES (%(dag_id)s, %(root_dag_id)s, %(is_paused)s, %(is_subdag)s, %(is_active)s, %(last_parsed_time)s, %(last_pickled)s, %(last_expired)s, %(scheduler_lock)s, %(pickle_id)s, %(fileloc)s, %(owners)s, %(description)s, %(default_view)s, %(schedule_interval)s, %(timetable_description)s, %(max_active_tasks)s, %(max_active_runs)s, %(has_task_concurrency_limits)s, %(has_import_errors)s, %(next_dagrun)s, %(next_dagrun_data_interval_start)s, %(next_dagrun_data_interval_end)s, %(next_dagrun_create_after)s)]
+[parameters: [{'description': 'import to database raw data', 'max_active_runs': 16, 'next_dagrun_create_after': DateTime(2023, 12, 25, 0, 1, 0, tzinfo=Timezone('UT ... (625 characters truncated) ... Timezone('UTC')), 'default_view': 'grid', 'pickle_id': None, 'scheduler_lock': None, 'root_dag_id': None, 'last_expired': None, 'last_pickled': None}]]
+[2023-12-26 06:57:30,185] {processor.py:153} INFO - Started process (PID=607) to work on /opt/airflow/dags/scripts.py
+[2023-12-26 06:57:30,186] {processor.py:641} INFO - Processing file /opt/airflow/dags/scripts.py for tasks to queue
+[2023-12-26 06:57:30,187] {logging_mixin.py:115} INFO - [2023-12-26 06:57:30,187] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/scripts.py
+[2023-12-26 06:57:30,194] {processor.py:651} INFO - DAG(s) dict_keys(['import_dag']) retrieved from /opt/airflow/dags/scripts.py
+[2023-12-26 06:57:30,214] {logging_mixin.py:115} INFO - [2023-12-26 06:57:30,214] {dag.py:2371} INFO - Sync 1 DAGs
+[2023-12-26 06:57:30,221] {logging_mixin.py:115} INFO - [2023-12-26 06:57:30,221] {dag.py:2390} INFO - Creating ORM DAG for import_dag
+[2023-12-26 06:57:30,305] {logging_mixin.py:115} INFO - [2023-12-26 06:57:30,305] {dag.py:2919} INFO - Setting next_dagrun for import_dag to 2023-12-25T00:00:00+00:00, run_after=2023-12-25T00:01:00+00:00
+[2023-12-26 06:57:30,308] {processor.py:164} ERROR - Got an exception! Propagating...
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1609, in _execute_context
+    dialect, self, conn, execution_options, *args, **kw
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in _init_compiled
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in <dictcomp>
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/type_api.py", line 1308, in process
+    return process_param(value, dialect)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/sqlalchemy.py", line 169, in process_bind_param
+    attrs = {key: getattr(value, key) for key in self.attr_keys[type(value)]}
+KeyError: <class 'pendulum.duration.Duration'>
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/dag_processing/processor.py", line 158, in _run_file_processor
+    callback_requests=callback_requests,
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 71, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/dag_processing/processor.py", line 660, in process_file
+    dagbag.sync_to_db()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 71, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 615, in sync_to_db
+    for attempt in run_with_db_retries(logger=self.log):
+  File "/home/airflow/.local/lib/python3.7/site-packages/tenacity/__init__.py", line 382, in __iter__
+    do = self.iter(retry_state=retry_state)
+  File "/home/airflow/.local/lib/python3.7/site-packages/tenacity/__init__.py", line 349, in iter
+    return fut.result()
+  File "/usr/local/lib/python3.7/concurrent/futures/_base.py", line 428, in result
+    return self.__get_result()
+  File "/usr/local/lib/python3.7/concurrent/futures/_base.py", line 384, in __get_result
+    raise self._exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 629, in sync_to_db
+    DAG.bulk_write_to_db(self.dags.values(), session=session)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 68, in wrapper
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dag.py", line 2466, in bulk_write_to_db
+    session.flush()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3255, in flush
+    self._flush(objects)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3395, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/langhelpers.py", line 72, in __exit__
+    with_traceback=exc_tb,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3355, in _flush
+    flush_context.execute()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/unitofwork.py", line 453, in execute
+    rec.execute(self)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/unitofwork.py", line 630, in execute
+    uow,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/persistence.py", line 247, in save_obj
+    insert,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/persistence.py", line 1095, in _emit_insert_statements
+    statement, multiparams, execution_options=execution_options
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1520, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/elements.py", line 314, in _execute_on_connection
+    self, multiparams, params, execution_options
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1399, in _execute_clauseelement
+    cache_hit=cache_hit,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1615, in _execute_context
+    e, util.text_type(statement), parameters, None, None
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1930, in _handle_dbapi_exception
+    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1609, in _execute_context
+    dialect, self, conn, execution_options, *args, **kw
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in _init_compiled
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in <dictcomp>
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/type_api.py", line 1308, in process
+    return process_param(value, dialect)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/sqlalchemy.py", line 169, in process_bind_param
+    attrs = {key: getattr(value, key) for key in self.attr_keys[type(value)]}
+sqlalchemy.exc.StatementError: (builtins.KeyError) <class 'pendulum.duration.Duration'>
+[SQL: INSERT INTO dag (dag_id, root_dag_id, is_paused, is_subdag, is_active, last_parsed_time, last_pickled, last_expired, scheduler_lock, pickle_id, fileloc, owners, description, default_view, schedule_interval, timetable_description, max_active_tasks, max_active_runs, has_task_concurrency_limits, has_import_errors, next_dagrun, next_dagrun_data_interval_start, next_dagrun_data_interval_end, next_dagrun_create_after) VALUES (%(dag_id)s, %(root_dag_id)s, %(is_paused)s, %(is_subdag)s, %(is_active)s, %(last_parsed_time)s, %(last_pickled)s, %(last_expired)s, %(scheduler_lock)s, %(pickle_id)s, %(fileloc)s, %(owners)s, %(description)s, %(default_view)s, %(schedule_interval)s, %(timetable_description)s, %(max_active_tasks)s, %(max_active_runs)s, %(has_task_concurrency_limits)s, %(has_import_errors)s, %(next_dagrun)s, %(next_dagrun_data_interval_start)s, %(next_dagrun_data_interval_end)s, %(next_dagrun_create_after)s)]
+[parameters: [{'description': 'import to database raw data', 'max_active_runs': 16, 'next_dagrun_create_after': DateTime(2023, 12, 25, 0, 1, 0, tzinfo=Timezone('UT ... (626 characters truncated) ... Timezone('UTC')), 'default_view': 'grid', 'pickle_id': None, 'scheduler_lock': None, 'root_dag_id': None, 'last_expired': None, 'last_pickled': None}]]
+[2023-12-26 06:58:00,367] {processor.py:153} INFO - Started process (PID=635) to work on /opt/airflow/dags/scripts.py
+[2023-12-26 06:58:00,367] {processor.py:641} INFO - Processing file /opt/airflow/dags/scripts.py for tasks to queue
+[2023-12-26 06:58:00,367] {logging_mixin.py:115} INFO - [2023-12-26 06:58:00,367] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/scripts.py
+[2023-12-26 06:58:00,371] {processor.py:651} INFO - DAG(s) dict_keys(['import_dag']) retrieved from /opt/airflow/dags/scripts.py
+[2023-12-26 06:58:00,398] {logging_mixin.py:115} INFO - [2023-12-26 06:58:00,398] {dag.py:2371} INFO - Sync 1 DAGs
+[2023-12-26 06:58:00,408] {logging_mixin.py:115} INFO - [2023-12-26 06:58:00,408] {dag.py:2390} INFO - Creating ORM DAG for import_dag
+[2023-12-26 06:58:00,494] {logging_mixin.py:115} INFO - [2023-12-26 06:58:00,494] {dag.py:2919} INFO - Setting next_dagrun for import_dag to 2023-12-25T00:00:00+00:00, run_after=2023-12-25T00:01:00+00:00
+[2023-12-26 06:58:00,497] {processor.py:164} ERROR - Got an exception! Propagating...
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1609, in _execute_context
+    dialect, self, conn, execution_options, *args, **kw
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in _init_compiled
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in <dictcomp>
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/type_api.py", line 1308, in process
+    return process_param(value, dialect)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/sqlalchemy.py", line 169, in process_bind_param
+    attrs = {key: getattr(value, key) for key in self.attr_keys[type(value)]}
+KeyError: <class 'pendulum.duration.Duration'>
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/dag_processing/processor.py", line 158, in _run_file_processor
+    callback_requests=callback_requests,
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 71, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/dag_processing/processor.py", line 660, in process_file
+    dagbag.sync_to_db()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 71, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 615, in sync_to_db
+    for attempt in run_with_db_retries(logger=self.log):
+  File "/home/airflow/.local/lib/python3.7/site-packages/tenacity/__init__.py", line 382, in __iter__
+    do = self.iter(retry_state=retry_state)
+  File "/home/airflow/.local/lib/python3.7/site-packages/tenacity/__init__.py", line 349, in iter
+    return fut.result()
+  File "/usr/local/lib/python3.7/concurrent/futures/_base.py", line 428, in result
+    return self.__get_result()
+  File "/usr/local/lib/python3.7/concurrent/futures/_base.py", line 384, in __get_result
+    raise self._exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 629, in sync_to_db
+    DAG.bulk_write_to_db(self.dags.values(), session=session)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 68, in wrapper
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dag.py", line 2466, in bulk_write_to_db
+    session.flush()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3255, in flush
+    self._flush(objects)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3395, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/langhelpers.py", line 72, in __exit__
+    with_traceback=exc_tb,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3355, in _flush
+    flush_context.execute()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/unitofwork.py", line 453, in execute
+    rec.execute(self)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/unitofwork.py", line 630, in execute
+    uow,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/persistence.py", line 247, in save_obj
+    insert,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/persistence.py", line 1095, in _emit_insert_statements
+    statement, multiparams, execution_options=execution_options
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1520, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/elements.py", line 314, in _execute_on_connection
+    self, multiparams, params, execution_options
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1399, in _execute_clauseelement
+    cache_hit=cache_hit,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1615, in _execute_context
+    e, util.text_type(statement), parameters, None, None
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1930, in _handle_dbapi_exception
+    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1609, in _execute_context
+    dialect, self, conn, execution_options, *args, **kw
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in _init_compiled
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 1074, in <dictcomp>
+    for key in compiled_params
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/sql/type_api.py", line 1308, in process
+    return process_param(value, dialect)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/sqlalchemy.py", line 169, in process_bind_param
+    attrs = {key: getattr(value, key) for key in self.attr_keys[type(value)]}
+sqlalchemy.exc.StatementError: (builtins.KeyError) <class 'pendulum.duration.Duration'>
+[SQL: INSERT INTO dag (dag_id, root_dag_id, is_paused, is_subdag, is_active, last_parsed_time, last_pickled, last_expired, scheduler_lock, pickle_id, fileloc, owners, description, default_view, schedule_interval, timetable_description, max_active_tasks, max_active_runs, has_task_concurrency_limits, has_import_errors, next_dagrun, next_dagrun_data_interval_start, next_dagrun_data_interval_end, next_dagrun_create_after) VALUES (%(dag_id)s, %(root_dag_id)s, %(is_paused)s, %(is_subdag)s, %(is_active)s, %(last_parsed_time)s, %(last_pickled)s, %(last_expired)s, %(scheduler_lock)s, %(pickle_id)s, %(fileloc)s, %(owners)s, %(description)s, %(default_view)s, %(schedule_interval)s, %(timetable_description)s, %(max_active_tasks)s, %(max_active_runs)s, %(has_task_concurrency_limits)s, %(has_import_errors)s, %(next_dagrun)s, %(next_dagrun_data_interval_start)s, %(next_dagrun_data_interval_end)s, %(next_dagrun_create_after)s)]
+[parameters: [{'description': 'import to database raw data', 'max_active_runs': 16, 'next_dagrun_create_after': DateTime(2023, 12, 25, 0, 1, 0, tzinfo=Timezone('UT ... (625 characters truncated) ... Timezone('UTC')), 'default_view': 'grid', 'pickle_id': None, 'scheduler_lock': None, 'root_dag_id': None, 'last_expired': None, 'last_pickled': None}]]
