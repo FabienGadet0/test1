@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  pipeline:
+    build:
+      context: ./scripts
+    depends_on:
+      - db
+
+  db:
+    build:
+      context: ./database
+    environment:
+      volumes:
+    ports:
+      - "5432:5432"

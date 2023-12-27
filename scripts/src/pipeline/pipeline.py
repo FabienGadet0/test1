@@ -14,9 +14,6 @@ import click
 @click.option('--target_dir', default="./data")
 def main(csv_file_path, json_file_path, zip_file_path, batch_size, target_dir):
 
-    print(csv_file_path)
-    print(json_file_path)
-    print(batch_size)
     connected, connection = create_connection()
     if connected:
         print("[INFO] unzipping csv file")
