@@ -4,4 +4,4 @@ ENV POSTGRES_DB production
 ENV POSTGRES_USER user
 ENV POSTGRES_PASSWORD pwd
 
-COPY init.sql /docker-entrypoint-initdb.d/
+COPY ./queries/* /docker-entrypoint-initdb.d/
