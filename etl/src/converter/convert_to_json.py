@@ -1,13 +1,21 @@
-
 import csv
 import json
 import click
 
-# i use latin-1 because utf-8 return errors for some specific characters
+# I use latin-1 because utf-8 returns errors for some specific characters
 CSV_ENCODING = 'latin-1'
 
 
 def process_batch(batch):
+    """
+    Process a batch of rows from the CSV file.
+
+    Args:
+        batch (list): List of rows in the batch.
+
+    Returns:
+        list: Processed batch.
+    """
     return batch
 
 
@@ -16,9 +24,20 @@ def process_batch(batch):
 @click.option('--json-file', required=True, help='Path to the output JSON file')
 @click.option('--batch-size', default=1000, help='Batch size for processing CSV file')
 def main(csv_file, json_file, batch_size):
+    """
+    Main function to convert CSV to JSON.
+
+    Args:
+        csv_file (str): Path to the input CSV file.
+        json_file (str): Path to the output JSON file.
+        batch_size (int): Batch size for processing CSV file.
+
+    Returns:
+        None
+    """
     try:
         with open(csv_file, 'r', encoding=CSV_ENCODING) as csv_file:
-            # i use dictReader because it can read lazily
+            # I use DictReader because it can read lazily
             csv_reader = csv.DictReader(csv_file)
 
             batch_count = 0
