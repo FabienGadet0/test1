@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS landing.raw_products (
     processed BOOLEAN DEFAULT FALSE
 );
 
-CREATE TABLE IF NOT EXISTS public.raw_parsed_products (
+CREATE TABLE IF NOT EXISTS landing.raw_parsed_products (
     id SERIAL PRIMARY KEY,
     country VARCHAR(255),
     quantity INTEGER NOT NULL, 

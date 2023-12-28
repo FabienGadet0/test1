@@ -7,8 +7,8 @@ import click
 
 
 @click.command()
-@click.argument('csv_file_path',  type=click.Path(exists=True), envvar="CSV_FILE_PATH")
-@click.argument('json_file_path', type=click.Path(exists=True), envvar="JSON_FILE_PATH")
+@click.argument('csv_file_path', envvar="CSV_FILE_PATH")
+@click.argument('json_file_path', envvar="JSON_FILE_PATH")
 @click.argument('zip_file_path', envvar="ZIP_FILE_PATH",  type=click.Path(exists=True))
 @click.option('--batch_size', default='1000', help='Batch size for processing CSV file')
 @click.option('--target_dir', default="./data")

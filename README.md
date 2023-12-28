@@ -38,9 +38,8 @@ docker exec -it rehub-db-1 psql -h localhost -U user -d production -W
 
 ## Basic overview
 
-Every part, except the views, consists of Python scripts that can all be executed at once using poetry run pipeline.  
-It will run consecutively.  
-Note that each step can be run independently if needed by executing the corresponding file.
+Except for the views, each part involves Python scripts that can be executed together using poetry run pipeline.  
+The process runs consecutively, but individual steps can be executed independently by running the corresponding file.
 
 - `unzip()`  
   Unzip the input zip file to csv
@@ -52,13 +51,16 @@ Note that each step can be run independently if needed by executing the correspo
   Load the json file to the database
 
 - `call_procedure()`  
-  Call the procedure called `raw_json_to_parsed_product()` that handle the json in `landing.raw_products` and extract it to `public.raw_parsed_products`
+  Call the procedure called `raw_json_to_parsed_product()` that handle the json in `landing.raw_products` and extract it to `landing.raw_parsed_products`
+
+- Views  
+   Views are created at the database initialization and can be found in `./database/queries`
 
 ![pipeline](./pipeline.png)
 
 ## CSV input
 
-I got this csv from ![Kaggle](https://www.kaggle.com/code/sinaasappel/ecommerce-data-exploration-and-visualization/input)  
+I got this csv from [Kaggle](https://www.kaggle.com/code/sinaasappel/ecommerce-data-exploration-and-visualization/input)  
 It has duplicates on purpose so i was thinking it would be a good example .
 
 The content is as following :

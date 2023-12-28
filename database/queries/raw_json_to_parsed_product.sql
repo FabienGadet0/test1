@@ -26,7 +26,7 @@ BEGIN
 
                 -- Insert parsed data into the public table
                 BEGIN
-                    INSERT INTO public.raw_parsed_products (country, quantity, invoice_no, stock_code, unit_price, customer_id, description, invoice_date)
+                    INSERT INTO landing.raw_parsed_products (country, quantity, invoice_no, stock_code, unit_price, customer_id, description, invoice_date)
                     VALUES (
                         parsed_data->>'Country',
                         (parsed_data->>'Quantity')::INTEGER,
