@@ -3,9 +3,12 @@ import shutil
 
 
 def main(zip_file_path, target_dir):
-    e = shutil.unpack_archive(zip_file_path, target_dir)
-    print(f"file {zip_file_path} unzipped to {target_dir}")
-    return e
+    try:
+        shutil.unpack_archive(zip_file_path, target_dir)
+        print(f"File {zip_file_path} unzipped to {target_dir}")
+    except Exception as e:
+        print(f"[ERROR] Failed to unzip file: {e}")
+        raise
 
 
 @click.command()

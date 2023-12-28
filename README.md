@@ -40,6 +40,7 @@ docker exec -it test1-db-1 psql -h localhost -U user -d production -W
 
 Except for the views, each part involves Python scripts that can be executed together using poetry run pipeline.  
 The process runs consecutively, but individual steps can be executed independently by running the corresponding file.
+Each process have error handling and will throw exception if something fail which will stop the pipeline.
 
 - `unzip()`  
   Unzip the input zip file to csv
