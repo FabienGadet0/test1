@@ -38,8 +38,9 @@ docker exec -it rehub-db-1 psql -h localhost -U user -d production -W
 
 ## Basic overview
 
-Every parts except the views are python scripts that can all be executed all at once using `poetry run pipeline` it will run consecutively :
-(note that every steps can be run independantly if needed by running the corresponding file)
+Every part, except the views, consists of Python scripts that can all be executed at once using poetry run pipeline.  
+It will run consecutively.  
+Note that each step can be run independently if needed by executing the corresponding file.
 
 - `unzip()`  
   Unzip the input zip file to csv
