@@ -54,7 +54,8 @@ The process runs consecutively, but individual steps can be executed independent
   Call the procedure called `raw_json_to_parsed_product()` that handle the json in `landing.raw_products` and extract it to `landing.raw_parsed_products`
 
 - Views  
-   Views are created at the database initialization and can be found in `./database/queries`
+   Views are created at the database initialization and can be found in `./database/queries`  
+   `public.top_50_daily_revenue_per_country` and `public.top_80_percent_revenue_products`
 
 ![pipeline](./pipeline.png)
 
