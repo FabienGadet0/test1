@@ -6,7 +6,7 @@ SELECT
   DATE(invoice_date) AS day,
   SUM(quantity * unit_price) AS total_revenue
 FROM
-  raw_parsed_products
+  landing.raw_parsed_products
 GROUP BY
   description,
   country,

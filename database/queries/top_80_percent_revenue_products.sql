@@ -9,7 +9,7 @@ WITH ProductRevenue AS (
     SUM(quantity * unit_price) OVER (ORDER BY quantity * unit_price DESC) AS cumulative_revenue,
     SUM(quantity * unit_price) OVER () AS total_revenue
   FROM
-    public.raw_parsed_products
+    landing.raw_parsed_products
 )
 SELECT
   stock_code,

@@ -1,5 +1,5 @@
 -- This procedure aim to fully parse raw json to a column based table (the data is still raw)
--- from table landing.raw_products -> public.raw_parsed_products
+-- from table landing.raw_products -> landing.raw_parsed_products
 
 CREATE OR REPLACE PROCEDURE raw_json_to_parsed_product()
 AS $$
