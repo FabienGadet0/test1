@@ -14,19 +14,20 @@ import click
 @click.option('--target_dir', default="./data")
 def main(csv_file_path, json_file_path, zip_file_path, batch_size, target_dir):
 
+    print("Running pipeline", flush=True)
     connected, connection = create_connection()
     if connected:
-        print("[INFO] unzipping csv file")
+        print("[INFO] unzipping csv file", flush=True)
         unzip(zip_file_path, target_dir)
-        print("[INFO] running conversion to json ...")
+        print("[INFO] running conversion to json ...", flush=True)
         convert_to_json(csv_file_path, json_file_path, batch_size)
-        print("[INFO] running load to database ...")
+        print("[INFO] running load to database ...", flush=True)
         load_to_db(json_file_path)
-        print("[INFO] Call procedure to extract json ")
-        print("[INFO] it can take a little bit of time ...")
+        print("[INFO] Call procedure to extract json", flush=True)
         call_procedure()
     else:
-        print(f"[ERROR] Can't connect to the database. Error: {connection}")
+        print(
+            f"[ERROR] Can't connect to the database. Error: {connection}", flush=True)
 
 
 if __name__ == "__main__":

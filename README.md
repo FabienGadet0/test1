@@ -30,7 +30,7 @@ just run this :
 
 ```
 
-docker exec -it rehub-db-1 psql -h localhost -U user -d production -W
+docker exec -it test1-db-1 psql -h localhost -U user -d production -W
 
 ```
 
@@ -61,7 +61,7 @@ The process runs consecutively, but individual steps can be executed independent
 ## CSV input
 
 I got this csv from [Kaggle](https://www.kaggle.com/code/sinaasappel/ecommerce-data-exploration-and-visualization/input)  
-It has duplicates on purpose so i was thinking it would be a good example .
+It has duplicates and 536365 lines so i was thinking it would be a good example .
 
 The content is as following :
 
