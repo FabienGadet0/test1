@@ -1,3 +1,9 @@
+This repository has two branches , one with and one without airflow.
+if you prefer to see the airflow one , just switch to the branch named `airflow`.
+Note that this README changes depending on the branch.
+
+The `main` branch focus on the pipeline itself and allow you to run it as well but without airflow.
+
 # Installation
 
 ## Prerequisites
