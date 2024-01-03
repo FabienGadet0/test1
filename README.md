@@ -40,6 +40,20 @@ docker exec -it test1-db-1 psql -h localhost -U user -d production -W
 
 ```
 
+### Tables
+
+`raw_parsed_products`  
+![raw_parsed_products](./raw_parsed_products.png)
+
+`raw_products`  
+![raw_products](./raw_products.png)
+
+`top_50_daily_revenue_per_country`  
+![top_50_daily_revenue_per_country](./top_50_daily_revenue_per_country.png)
+
+`top_80_percent_revenue_products`  
+![top_80_percent_revenue_products](./top_80_percent_revenue_products.png)
+
 # Explanations
 
 ## Basic overview
