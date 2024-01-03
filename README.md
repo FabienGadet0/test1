@@ -43,13 +43,13 @@ docker exec -it test1-db-1 psql -h localhost -U user -d production -W
 ### Tables
 
 You can find all queries in `./database/queries/`  
-`raw_parsed_products`
-
-![raw_parsed_products](./raw_parsed_products.png)
-
 `raw_products`
 
 ![raw_products](./raw_products.png)
+
+`raw_parsed_products`
+
+![raw_parsed_products](./raw_parsed_products.png)
 
 `top_50_daily_revenue_per_country`
 
