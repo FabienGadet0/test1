@@ -14,12 +14,13 @@ def create_connection():
         database = os.environ.get('DB_DATABASE', 'production')
         user = os.environ.get('DB_USER', 'user')
         password = os.environ.get('DB_PASSWORD', 'pwd')
-
+        port = os.environ.get('DB_PORT', 5432)
         connection_params = {
             "host": host,
             "database": database,
             "user": user,
             "password": password,
+            "port": port,
         }
 
         connection = psycopg2.connect(**connection_params)

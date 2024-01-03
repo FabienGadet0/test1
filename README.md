@@ -8,29 +8,50 @@ The only needed dependency is Docker.
 
 If you don't have Docker installed, you can follow the official Docker installation guide for your operating system.
 
-## Run it
+# Airflow
 
-Since there are 2 containers and the database need to initialize first i suggest to not run everything in one time but in two like this :
+This branch is using airflow to run the pipeline
 
-```
-docker-compose up db
-```
+the dag configuration is in `./airflow/dags/scripts_docker.py`
 
-And in a separate terminal :
+You can run it using this command
 
 ```
-docker-compose up pipeline
+cd ./airflow
+docker compose up
 ```
 
-## Connect to the database
+then go to localhost:8080.
 
-Once both are running you can execute in a new terminal `psql` directly in the database container to query what you want,  
+## Configuration
+
+Since the dag is running its tasks using `dockerOperator` you need to expose your docker socket to the container,
+you can do it by setting a volume in the `docker_compose.yml` :
+
+```
+x-airflow-common:
+  volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+```
+
+You can see the dag here :  
+![dag](./dag.png)
+
+you can also access the dag's graph to see what tasks are inside it:  
+![dag_graph](./dag_graph.png)
+
+or the grid for more metadata:  
+![dag_grid](./dag_grid.png)
+
+# Connect to the database
+
+Once you ran the pipeline you can access the database directly from your computer at port `5433` or you can execute in a new terminal `psql` directly in the database container to query what you want,  
 (it will prompt for a password , the default password is `pwd`)  
 just run this :
 
 ```
 
-docker exec -it test1-db-1 psql -h localhost -U user -d production -W
+docker exec -it airflow-db-1 psql -h localhost -U user -d production -W
 
 ```
 

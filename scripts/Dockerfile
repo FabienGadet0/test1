@@ -20,6 +20,7 @@ ENV DB_HOST "db"
 ENV DB_DATABASE "production"
 ENV DB_USER "user"
 ENV DB_PASSWORD "pwd"
+# ENV DB_PORT 5433
 
-
-ENTRYPOINT ["poetry", "run", "pipeline"]
+# ENTRYPOINT ["poetry", "run", "pipeline"]
+ENTRYPOINT ["poetry", "run"]
