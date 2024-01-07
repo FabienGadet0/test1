@@ -19,24 +19,26 @@ If you don't have Docker installed, you can follow the official Docker installat
 Since there are 2 containers and the database need to initialize first i suggest to not run everything in one time but in two like this :
 
 ```
+cd ./scripts
 docker-compose up db
 ```
 
 And in a separate terminal :
 
 ```
+cd ./scripts
 docker-compose up pipeline
 ```
 
 ## Connect to the database
 
 Once both are running you can execute in a new terminal `psql` directly in the database container to query what you want,  
-(it will prompt for a password , the default password is `pwd`)  
+(it will prompt for a password , the default password is `pwd`)
 just run this :
 
 ```
 
-docker exec -it test1-db-1 psql -h localhost -U user -d production -W
+docker exec -it nameofthecontainer psql -h localhost -U user -d production -W
 
 ```
 
