@@ -1,8 +1,13 @@
 # Installation
 
 ## Prerequisites
+Install Docker.
+If you are running this in linux or WSL , you will need to give permission to the docker socket otherwise airflow won't work
+```
+chmod 777 /var/run/docker.sock
+```
+I suggest you to revert this command after.
 
-The only needed dependency is Docker.
 
 ### Install Docker
 
@@ -15,9 +20,14 @@ This branch is using airflow to run the pipeline
 the dag configuration is in `./airflow/dags/scripts_docker.py`
 
 You can run it using this command
-
+Airflow run a container called `import_dag` that you need to build first by running
 ```
-cd ./airflow
+cd ./scripts
+docker build -t import_dag .
+```
+then
+```
+cd ../airflow
 docker compose up
 ```
 
